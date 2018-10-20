@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">The Stepping Stone</a>
+			<button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+
+
+		<div id="mymenu" class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Setting <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Chage Password</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</li>
+		</ul>
+		<!-- <button class="btn btn-success navbar-btn">Help</button> -->
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+			<li><a href="#" data-target="#loginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+		<form class="navbar-form navbar-right">
+			<div class="form-group">
+				<input type="text" placeholder="Search" class="form-control">
+			</div>
+			<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+		</form>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid" style="background-image: url('images/1.jpg'); margin-top: -20px;">
+	<div class="row" style="min-height: 150px;">
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<h2><span class="label label-success">Category</span></h2>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="#">Sony</a><span class="badge">21</span></li>
+				<li class="list-group-item"><a href="#">Apple</a><span class="badge">7</span></li>
+				<li class="list-group-item"><a href="#">Samsung</a><span class="badge">59</span></li>
+			</ul>
+
+		</div>
+		<div class="col-md-7">
+			<ol class="breadcrumb">
+				<li>Home</li>
+				<li>User</li>
+				<li>Setting</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4>Sony</h4>
+						</div>
+						<div class="panel-body">
+							<p class="text-justify">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+							</p>
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-success btn-sm">Buy</button>
+							<button class="btn btn-warning btn-sm">Add To Cart</button>
+						</div>
+					</div>
+			
+
+				</div>
+
+			</div>
+			<hr />
+			<div class="row">
+				<h2>Registration</h2>
+				<!-- <div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>For New User Registration Here</h4>
+					</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<label>Full Name</label>
+								<input type="text" placeholder="Full Name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Username</label>
+								<input type="text" placeholder="Username" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="password" placeholder="Password" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Address</label>
+								<textarea class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<label>City</label>
+								<select class="form-control">
+									<option>Select</option>
+									<option>Select</option>
+									<option>Select</option>
+									<option>Select</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-success">Save</button>
+						<button class="btn btn-danger pull-right">Cancle</button>
+					</div>
+				</div> -->
+			</div> 
+		</div>
+		<div class="col-md-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- This is Login Modal -->
+<div class="modal fade" id="loginModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Login</h2>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label>Username</label>
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<input type="text" placeholder="Username" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+							<input type="password" placeholder="Username" class="form-control">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+				<button class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
