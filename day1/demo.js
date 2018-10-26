@@ -12,4 +12,4 @@ console.log("my name is ", a);
 	// }
 // }
 
-// obj.demo();
+// obj.	demo();
