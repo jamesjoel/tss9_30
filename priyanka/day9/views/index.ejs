@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    </head>
+
+        <body> 
+            <h1>This is Home Page</h1> 
+            <h2> <%= f_name +" "+l_name %> </h2>
+            <ol>
+                <% arr.forEach(function(item) { %>
+                    <li> <%= item %> </li>
+                <% }) %>
+            </ol>  
+            <table border="1" align="center" >
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+                <% user.forEach(function(item,index) { %>
+                    <tr>
+                        <td> <%= index+1 %> </td>
+                        <td> <%= item.name %> </td>
+                        <td> <%= item.age %> </td>
+                        <td> <%= item.city %> </td>
+                    </tr>    
+                <% }) %>
+            </table>
+        </body>
+</html>
