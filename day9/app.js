@@ -55,6 +55,23 @@ app.get("/", function(req, res){
 	res.render("index", obj);
 });
 
+//error is coming at mob 
+// Anils-MacBook-Pro:day9pract anilvarandani$ node app.js
+// /Users/anilvarandani/Desktop/nodeAnil/tss9_30/anilv/day9pract/app.js:27
+// 				mob : 89,
+// 				^^^
+
+// SyntaxError: Unexpected identifier
+//     at createScript (vm.js:80:10)
+//     at Object.runInThisContext (vm.js:139:10)
+//     at Module._compile (module.js:617:28)
+//     at Object.Module._extensions..js (module.js:664:10)
+//     at Module.load (module.js:566:32)
+//     at tryModuleLoad (module.js:506:12)
+//     at Function.Module._load (module.js:498:3)
+//     at Function.Module.runMain (module.js:694:10)
+//     at startup (bootstrap_node.js:204:16)
+//     at bootstrap_node.js:625:3
 
 
 
