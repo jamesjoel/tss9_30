@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstap.css">
+	</head>
+	<body>
+		<h1>This is an index page</h1>
+		<h2><%= f_name+" "+l_name %><h2>
+
+		<ol>
+		<% arr.forEach(function(item){ %>
+			<li><%= item %></li>
+
+			<% }); %>
+		</ol>	
+	</br>
+</br>
+<table border="1" align="centre">
+	<tr>
+		<th>Sr. No.</th>
+		<th>Name </th>
+		<th>City </th>
+		<th>Mobile </th>
+	</tr>
+	<% data.forEach(function(item, index){ %>
+		<tr>
+			<td><%= index+1 %></td>
+			<td><%= item.name %></td>
+			<td><%= item.city %></td> 
+			<td><%= item.mob %></td>
+		</tr>
+	<% }); %>
+</table>
+</body>
+</html>
