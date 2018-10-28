@@ -1,0 +1,18 @@
+body
+{
+    background-color: darkseagreen;
+}
+#latest
+{
+    background-color: aquamarine;
+}
+#latest .well
+{
+    background-color: cornsilk;
+    margin-top:10px;
+}
+
+#panel_setting
+{
+    margin-top:20px;
+}
