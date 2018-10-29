@@ -6,7 +6,7 @@ app.use(express.static(__dirname+"/public"));
 
 
 
-app.use(function(req, res, next){
+app.use(["/","/about"],function(req, res, next){
 	res.locals.logo = "JMAES";
 	
 	next();
