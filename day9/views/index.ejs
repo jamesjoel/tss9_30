@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-</head>
-<body>
-<h1>This Is Home page</h1>
-<h2><%= f_name+" "+l_name %></h2>
 
-<ol>
-	<% data.forEach(function(item){ %>
+	<h2>Home Page</h2>
+	<h3><%= name %></h3>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<hr />
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-		<li><%= item %></li>	
-
-	<% }) %>
-</ol>
-<Br />
-<table border="1" align="center" border="1">
-	<tr>
-		<th>S.No</th>
-		<th>Name</th>
-		<th>Age</th>
-		<th>City</th>
-	</tr>
-	<% user.forEach(function(item, index){ %>
-		<tr>
-			<td><%= index+1 %></td>
-			<td><%= item.name %></td>
-			<td><%= item.age %></td>
-			<td><%= item.city %></td>
-		</tr>
-	<% }) %>
-</table>
-</body>
-</html>
