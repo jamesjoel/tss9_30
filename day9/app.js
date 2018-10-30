@@ -1,35 +1,23 @@
 var express = require("express");
 var app = express();
 
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
 
 
-
 app.use(function(req, res, next){
 	res.locals.logo = "JMAES";
-	
 	next();
 });
 
 
 
 
-
-
-
-
-
-
-
 app.get("/", function(req, res){
-	
-	var name = "James";
-	var obj = { pagename : "index", title : "Home", name : name };
+	var obj = { pagename : "index", title : "Home" };
 	res.render("layout", obj);
 });
-
-
 app.get("/about", function(req, res){
 	var obj = { pagename : "about", title : "About" };
 	res.render("layout", obj);
