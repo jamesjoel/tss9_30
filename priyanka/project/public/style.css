@@ -16,3 +16,9 @@ body
 {
     margin-top:20px;
 }
+
+#footer
+{
+    background-color: black;
+    height: 100px; 
+}
