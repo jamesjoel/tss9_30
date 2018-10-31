@@ -1,0 +1,15 @@
+#content
+{
+    min-height:650px;
+    height:auto;
+    background-color: aquamarine;
+    margin-top: -20px;
+}
+#footer
+{
+    background-color: black;
+}
+#panel-setting
+{
+    margin-top:30px;
+}
