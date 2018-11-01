@@ -9,18 +9,18 @@
 								<h3>Register</h3>
 							</div>
 							<div class="panel-body">
-								<form>
+								<form action="/signup" method="post">
 									<div class="form-group">
 										<label>Full Name</label>
-										<input type="text" placeholder="Full Name" class="form-control">
+										<input name="full_name" type="text" placeholder="Full Name" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Username/Email</label>
-										<input type="text" placeholder="Username" class="form-control">
+										<input name="username" type="text" placeholder="Username" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Password</label>
-										<input type="password" placeholder="Password" class="form-control">
+										<input name="password" type="password" placeholder="Password" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Re-Password</label>
@@ -28,16 +28,16 @@
 									</div>
 									<div class="form-group">
 										<label>Address</label>
-										<textarea class="form-control" placeholder="Address"></textarea>
+										<textarea name="address" class="form-control" placeholder="Address"></textarea>
 									</div>
 									<div class="form-group">
 										<label>Contact</label>
-										<input type="text" placeholder="Contact" class="form-control">
+										<input name="contact" type="text" placeholder="Contact" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>City</label>
 										<br/>
-										<select class="form-control">
+										<select name="city" class="form-control">
 											<option>Select</option>
 											<option>Indore</option>
 											<option>Mumbai</option>
@@ -48,14 +48,14 @@
 									<div class="form-group">
 										<label>Gender</label>
 										<br />
-										Male <input type="radio" name="gender">
-										Female <input type="radio" name="gender">
+										Male <input type="radio" name="gender" value="male">
+										Female <input type="radio" name="gender" value="female">
 									</div>
-								</form>
 							</div>
 							<div class="panel-footer">
 								<input type="submit" class="btn btn-success" value="Signup">
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>

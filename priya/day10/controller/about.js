@@ -1,5 +1,5 @@
 var express= require ("express");
-var routes=ëxpress.Router();
+var routes=express.Router();
 
 routes.get("/", function(req,res){
 	var pagedata={title:"About", pagename:"about"}
