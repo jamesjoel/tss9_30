@@ -16,14 +16,14 @@
                     <h3>Register</h3>
                 </div>
                 <div class="panel-body">
-                    <form>
+                    <form action="/signup" method="post">
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" placeholder="Username" class="form-control"/>
+                            <input type="text" placeholder="Username" class="form-control" name="username"/>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" placeholder="Password" class="form-control"/>
+                            <input type="password" placeholder="Password" class="form-control" name="password"/>
                         </div>
                         <div class="form-group">
                                 <label>Re-Password</label>
@@ -31,33 +31,32 @@
                         </div>
                         <div class="form-group">
                                 <label>Address</label>
-                                <textarea class="form-control" placeholder="Address">Address</textarea>
+                                <textarea class="form-control" name="address">Address</textarea>
                         </div>
                         <div class="form-group">
                                 <label>Contact no.</label>
-                                <input type="text" placeholder="Contact-no" class="form-control"/>
+                                <input type="text" placeholder="Contact-no" class="form-control" name="contact"/>
                         </div>
                         <div class="form-group">
                                 <label>Gender</label>
-                                Male<input type="radio" name="gender"/>
-                                Female<input type="radio" name="gender"/>
+                                Male<input type="radio" name="gender" value="male"/>
+                                Female<input type="radio" name="gender" value="female"/>
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <select class="form-control">
+                            <select class="form-control" name="city">
                                 <option>Select</option>
                                 <option>Indore</option>
                                 <option>Bhopal</option>
                                 <option>Mumbai</option>
                                 <option>Pune</option>
                             </select>
-                        </div>
-                     </form>        
+                        </div>        
                </div>
                <div class="panel-footer">
                    <button class="btn btn-primary">Signup</button>
-                   <button class="submit">Save</button>
                </div>
+               </form>
             </div>
         </div>
     </div>               

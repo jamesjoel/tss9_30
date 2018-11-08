@@ -7,4 +7,8 @@ routes.get("/", function(req,res)
     res.render("layout",pagedata);
 });
 
+routes.post("/", function(req,res)
+{
+    console.log(req.body);
+});
 module.exports=routes;
