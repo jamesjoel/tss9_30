@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
-var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017";
+
 
 app.set("view engine", "ejs");
 
@@ -11,8 +10,7 @@ app.get("/", function(req, res){
 			console.log("Connection error", err);
 			return;
 		}
-		var db = client.db("tss9");
-		
+		var db = client.db("tss9"); // BSON
 		db.collection("user").find().toArray(function(err, result){
 			if(err){
 				console.log("Query Error", err);
@@ -36,3 +34,5 @@ app.listen(3000, function(error){
 	}
 	console.log("Server Running");
 });
+
+
