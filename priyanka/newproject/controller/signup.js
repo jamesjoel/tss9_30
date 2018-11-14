@@ -12,6 +12,7 @@ routes.get("/", function(req,res)
 routes.post("/", function(req,res)
 {
     //console.log(req.body);
+    //var obj = {fullname : req.body.full_name};
     req.body.password = sha1(req.body.password);
     user.insert(req.body, function(err,result)
     {
