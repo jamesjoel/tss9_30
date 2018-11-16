@@ -13,6 +13,12 @@ app.use(cookieParser());
 app.use(session({secret : "TSS9"}));
 app.use(nocache());
 app.use(flash());
+app.use(function(req,res,next)
+{
+    res.locals.session = req.session;
+    next();
+});
+
 
 var routes = require("./config/routes");
 

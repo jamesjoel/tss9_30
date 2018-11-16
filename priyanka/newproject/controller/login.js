@@ -2,6 +2,7 @@ var express= require("express");
 var routes = express.Router();
 var user = require("../models/user");
 var sha1 = require("sha1");
+var session = require("express-session");
 
 routes.get("/", function(req,res)
 {
@@ -24,6 +25,10 @@ routes.post("/", function(req,res)
            // console.log(result);
             if(result[0].password==sha1(p))
             {
+                req.session._id = result[0]._id;
+                req.session.full_name = result[0].full_name;
+                req.session.is_user_logged_in = true ;
+                
                 res.redirect("/user");
             }
             else
