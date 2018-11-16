@@ -23,6 +23,12 @@ routes.post("/", function(req, res){
 			// console.log(result);
 			if(result[0].password == sha1(p))
 			{
+				req.session._id = result[0]._id;
+				req.session.full_name = result[0].full_name;
+				req.session.is_user_logged_in = true;
+
+
+
 				res.redirect("/user");
 			}
 			else

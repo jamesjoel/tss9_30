@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var nocache = require("nocache");
 var flash = require("express-flash");
-
+var sha1 = require("sha1");
 
 app.use(express.static(__dirname+"/public"));
 app.use(bodyParser());
@@ -13,6 +13,14 @@ app.use(cookieParser());
 app.use(session({ secret : "TSS" }));
 app.use(nocache());
 app.use(flash());
+
+
+app.use(function(req, res, next){
+	res.locals.session = req.session;
+	next();
+});
+
+console.log(sha1("admin"));
 
 
 
