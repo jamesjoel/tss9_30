@@ -25,9 +25,17 @@
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <% if(session.is_user_logged_in){ %>
+                        
+                            <li><a  href="/logout">Logout</a></li>
+                        
+                            <li><a href="/user">User</a></li>
+                    <%} else { %>
+
                         <li><a  href="/login">Login</a></li>
                         <li><a href="/signup">Register</a></li>
-                    </ul>
+                        <% } %>
+                    </ul>    
                 </div>
             </div>
         </nav>

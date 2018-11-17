@@ -6,6 +6,21 @@ routes.use("/about", require("../controller/about"));
 routes.use("/contact", require("../controller/contact"));
 routes.use("/login", require("../controller/login"));
 routes.use("/signup", require("../controller/signup"));
-routes.use("/user",require("../controller/user"));
+routes.use("/user", backdoor, require("../controller/user"));
+routes.use("/logout", require("../controller/logout"));
 
+function backdoor(req, res, next)
+{
+    if(! req.session.is_user_logged_in)
+    {
+    res.redirect("/login");
+    return;
+    }
+    next();
+}
+
+// routes.get("/logout", function(req, res){
+// 	req.session.destroy();
+// 	res.redirect("/login");
+// });
 module.exports = routes;
