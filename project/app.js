@@ -7,6 +7,8 @@ var nocache = require("nocache");
 var flash = require("express-flash");
 var sha1 = require("sha1");
 
+var category = require("./models/category");
+
 app.use(express.static(__dirname+"/public"));
 app.use(bodyParser());
 app.use(cookieParser());
@@ -17,10 +19,13 @@ app.use(flash());
 
 app.use(function(req, res, next){
 	res.locals.session = req.session;
-	next();
+	category.find({}, function(err, result){
+		res.locals.category=result;
+		next();
+	});
 });
 
-console.log(sha1("admin"));
+
 
 
 
