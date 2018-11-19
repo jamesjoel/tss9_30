@@ -4,6 +4,7 @@ var routes = express.Router();
 routes.use("/", require("./login"));
 routes.use("/dashboard", backdoor, require("./dashboard"));
 routes.use("/category", backdoor, require("./category"));
+routes.use("/product", backdoor, require("./product"));
 
 
 

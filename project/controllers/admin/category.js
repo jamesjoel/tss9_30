@@ -12,4 +12,19 @@ routes.post("/add", function(req, res){
 		res.redirect("/admin/category/add");
 	});
 });
+
+routes.get("/view", function(req, res){
+	category.find({}, function(err, result){
+		var pagedata = { title : "View All Category", pagename : "admin/view_category", result : result};
+		res.render("admin_layout", pagedata);
+		
+	});	
+
+
+
+
+
+});
+
+
 module.exports=routes;

@@ -12,9 +12,10 @@ module.exports.insert=function(obj, cb){
 	});
 }
 
-module.exports.find=function(where, cb){
+module.exports.find=function(where, cb){ 
 	connect(function(err, client){
 		var db = client.db(dbname);
 		db.collection("user").find(where).toArray(cb);
+		// db.collection("user").find({ city : "ujjain"}).toArray(function(err, result));
 	});
 }
