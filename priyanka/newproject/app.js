@@ -5,6 +5,8 @@ var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var nocache = require("nocache");
 var flash = require("express-flash");
+var sha1 = require("sha1");
+//var category = require("./models/category");
 
 
 app.use(express.static(__dirname+"/public"));
