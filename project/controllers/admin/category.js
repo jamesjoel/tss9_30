@@ -1,6 +1,9 @@
 var express = require("express");
 var routes = express.Router();
 var category = require("../../models/category");
+var mongodb = require("mongodb");
+
+
 
 routes.get("/add", function(req, res){
 	var pagedata = { title : "Add New Category", pagename : "admin/add_category"};
@@ -25,6 +28,17 @@ routes.get("/view", function(req, res){
 
 
 });
+
+routes.get("/delete/:a", function(req, res){
+	// console.log(req.params);
+	var id = req.params.a;
+	category.delete({ _id : new mongodb.ObjectId(id) }, function(err, result){
+		res.redirect("/admin/category/view");
+	});
+});
+
+
+
 
 
 module.exports=routes;
