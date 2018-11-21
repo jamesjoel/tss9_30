@@ -3,9 +3,13 @@ var routes = express.Router();
 var category = require("../../models/category");
 var product = require("../../models/product");
 
-routes.get("/view", function(req, res){
-	var pagedata = { title : "View All Product", pagename : "admin/view_product"};
+routes.get("/view", function(req, res)
+{
+	product.find({}, function(err,result)
+	{
+	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
 	res.render("admin_layout", pagedata);
+	});
 });
 
 

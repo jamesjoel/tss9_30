@@ -27,3 +27,16 @@ module.exports.find = function(where,cb)
         db.collection("category").find(where).toArray(cb);
     });
 }
+
+module.exports.delete = function(where,cb)
+{
+    connect(function(err,client)
+    {
+        if(err)
+        {
+            console.log("Deletion error", err);
+        }
+        var db = client.db(dbname);
+        db.collection("category").remove(where,cb);
+    });
+}
