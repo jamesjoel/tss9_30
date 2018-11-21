@@ -14,3 +14,9 @@ module.exports.find=function(where, cb){
 		db.collection("product").find(where).toArray(cb);
 	});	
 }
+module.exports.delete=function(where, cb){
+	connect(function(err, client){
+		var db = client.db(dbName);
+		db.collection("product").remove(where, cb);
+	});
+}
