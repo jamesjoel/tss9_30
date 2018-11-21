@@ -1,22 +1,25 @@
 <h1> View All Products </h1>
-        <table class="table-hover table-stripped">
+<div class="container">
+        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 col-md-offset-4 col-xs-offset-4 col-sm-offset-4 col-lg-offset-4">
+        <table class="table table-hover table-striped">
                 <tr>
-                    <th>S.No.</th>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
-                    <th>Detail</th>
-                    <th>Discount Price</th>
+                    <th> S.No. </th>
+                    <th> Product Name </th>
+                    <th> Product Price </th>
+                    <th> Discount </th>
+                    <th> Edit </th>
+                    <th> Delete </th>
                 </tr>
-                <%result.forEach(function(item,index)
-                {%>
+                <% result.forEach(function(item, index){ %>
                     <tr>
                         <td><%= index+1 %></td>
-                        <td><% = item.name%></td>
-                        <td><% = item.price%></td>
-                        <td><% = item.detail%></td>
-                        <td><% = item.discount%></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Edit</a></td>
-            <td><a href="#"  class="btn btn-sm btn-danger">Delete</a></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.price %></td>
+                        <td><%= item.discount %></td>
+                        <td><a href="/admin/product/edit/<%= item._id %>" class="btn btn-sm btn-info">Edit</a></td>
+                        <td><a href="/admin/product/delete/<%= item._id %>" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
-                <% }) %>
-                </table>
+                <% }) %>        
+        </table>
+    </div>            
+</div>

@@ -1,2 +1,21 @@
 <h1>View All Product</h1>
-<a href="/admin/product/demo/100/rohit/indore">Demo</a>
+<table class="table table-bordered table-hover table-stripped">
+	<tr>
+		<th>S.No.</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Discount</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	<% result.forEach(function(item, index){ %>
+		<tr>
+			<td><%= index+1 %></td>
+			<td><%= item.name %></td>
+			<td><%= item.price %></td>
+			<td><%= item.discount %></td>
+			<td><a href="/admin/product/edit/<%= item._id %>" class="btn btn-sm btn-info">Edit</a></td>
+			<td><a href="/admin/product/delete/<%= item._id %>" class="btn btn-sm btn-danger">Delete</a></td>
+		</tr>
+	<% }) %>
+</table>
