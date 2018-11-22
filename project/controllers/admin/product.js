@@ -26,6 +26,13 @@ routes.get("/edit/:id", function(req, res){
 	});
 
 });
+routes.post("/edit", function(req, res){
+	var where = { _id : new mongodb.ObjectId(req.body.id)};
+	delete req.body.id;
+	product.update(where, req.body, function(err, result){
+		res.redirect("/admin/product/view");
+	});
+});
 
 routes.get("/add", function(req, res){
 	category.find({}, function(err, result){
