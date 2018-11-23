@@ -2,7 +2,8 @@
 	<Br />
 	<Br />
 	<div class="offset-md-4 col-md-4">
-		<form action="/admin/product/add" method="post">
+		<form action="/admin/product/edit" method="post">
+			<input type="hidden" name="id" value="<%= result1._id %>"/>
 		  <div class="form-group">
 		    <label for="email">Product Name</label>
 		    <input value="<%= result1.name %>" type="text" name="name" class="form-control">
