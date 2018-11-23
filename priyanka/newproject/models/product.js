@@ -40,7 +40,7 @@ module.exports.delete = function(where,cb)
     });
 }
 
-module.exports.edit = function(where,obj,cb)
+module.exports.update = function(where,obj,cb)
 {
     connect(function(err,client)
     {

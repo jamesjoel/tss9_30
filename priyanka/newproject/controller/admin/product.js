@@ -76,7 +76,7 @@ routes.get("/edit/:id", function(req,res)
 
 routes.post("/edit",function(req,res){
     var where = {_id : new mongodb.ObjectId(req.body.id)};
-    var obj = {name : req.body.name, price:req.body.price, detail:req.body.detail, category:req.body.category,discount:req.body.discount};
+    delete req.body.id;
     product.update(where,obj ,function(err,result)
     {
         if(err)
@@ -84,6 +84,7 @@ routes.post("/edit",function(req,res){
             console.log("Updation error",err);
             return;
         }
+        console.log(req.body);
         res.redirect("/admin/product/view");
     });
 });
