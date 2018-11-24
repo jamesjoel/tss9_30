@@ -26,6 +26,7 @@ app.use(function(req,res,next)
 });
 
 
+
 var routes = require("./config/routes");
 
 app.set("view engine","ejs");

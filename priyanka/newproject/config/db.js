@@ -1,2 +1,2 @@
-const DB = "tss9";
+const DB = "tss";
 module.exports =DB;

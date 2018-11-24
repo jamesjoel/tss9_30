@@ -68,23 +68,21 @@ routes.get("/edit/:id", function(req,res)
                 console.log("Product updation error", err);
                 return;
             }
-            var pagedata={title:"Product Update",pagename:"admin/product/edit_product",result1 : result1[0] , result2 : result2};
+            var pagedata={title:"Edit Product",pagename:"admin/product/edit_product",result1 : result1[0] , result2 : result2};
             res.render("admin_layout",pagedata);
         });
     });
 });
 
-routes.post("/edit",function(req,res){
-    var where = {_id : new mongodb.ObjectId(req.body.id)};
+routes.post("/edit", function(req,res){
+    var where = ({_id : new mongodb.ObjectId(req.body.id)});
     delete req.body.id;
-    product.update(where,obj ,function(err,result)
-    {
+    product.update(where, req.body, function(err,result){
         if(err)
         {
-            console.log("Updation error",err);
+            console.log("Updation Error", err);
             return;
         }
-        console.log(req.body);
         res.redirect("/admin/product/view");
     });
 });

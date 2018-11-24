@@ -4,14 +4,6 @@ var category = require("../../models/category");
 var product = require("../../models/product");
 var mongodb = require("mongodb");
 
-<<<<<<< HEAD
-routes.get("/view", function(req, res)
-{
-	product.find({}, function(err,result)
-	{
-	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
-	res.render("admin_layout", pagedata);
-=======
 routes.get("/view", function(req, res){
 	product.find({}, function(err, result){
 		var pagedata = { title : "View All Product", pagename : "admin/view_product", result: result};
@@ -21,7 +13,6 @@ routes.get("/view", function(req, res){
 routes.get("/delete/:id", function(req, res){
 	product.delete({ _id : new mongodb.ObjectId(req.params.id)}, function(err, result){
 		res.redirect("/admin/product/view");
->>>>>>> cac61c6e3e4309556b7e56d73e587524bae9d46d
 	});
 });
 
