@@ -39,7 +39,7 @@ routes.post("/edit", function(req, res){
 
 routes.get("/add", function(req, res){
 	category.find({}, function(err, result){
-		var pagedata = { title : "Add New Product", pagename : "admin/add_product", result : result};
+		var pagedata = { title : "Add New Product", pagename : "admin/add_product", result : result, message : req.flash("msg")};
 		res.render("admin_layout", pagedata);
 
 	});
@@ -47,17 +47,29 @@ routes.get("/add", function(req, res){
 });
 
 routes.post("/add", function(req, res){
-	var name = namechange(req.files.image.name);
+	var arr = namechange(req.files.image.name);
+	var name = arr[0];
+	var ext = arr[1];
 	var dir = path.resolve();
-	req.files.image.mv(dir+"/public/products/"+name, function(err){
+	if(ext == "jpg" || ext == "jpeg" || ext == "png" || ext =="gif")
+	{
+		req.files.image.mv(dir+"/public/products/"+name, function(err){
 
-		req.body.image = name;
+			req.body.image = name;
 
-		product.insert(req.body, function(err, result){
-			res.redirect("/admin/product/view");
+			product.insert(req.body, function(err, result){
+				res.redirect("/admin/product/view");
+			});
+
 		});
+		
+	}
+	else
+	{
+		req.flash("msg", "This File Type Not Allowed");
+		res.redirect("/admin/product/add");
+	}
 
-	});
 
 
 });
