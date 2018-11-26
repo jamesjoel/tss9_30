@@ -74,15 +74,19 @@ routes.get("/edit/:id", function(req,res)
     });
 });
 
-routes.post("/edit", function(req,res){
-    var where = ({_id : new mongodb.ObjectId(req.body.id)});
+routes.post("/edit",function(req,res){
+    console.log(req.body);
+    var where = {_id : new mongodb.ObjectId(req.body.id)};
     delete req.body.id;
-    product.update(where, req.body, function(err,result){
+    console.log(req.body);
+    product.update(where,req.body,function(err,result)
+    {
         if(err)
         {
             console.log("Updation Error", err);
             return;
         }
+        //console.log(result);
         res.redirect("/admin/product/view");
     });
 });

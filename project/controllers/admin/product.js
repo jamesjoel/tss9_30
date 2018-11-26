@@ -3,13 +3,16 @@ var routes = express.Router();
 var category = require("../../models/category");
 var product = require("../../models/product");
 var mongodb = require("mongodb");
+var namechange=require("../../helpers/namechange");
+var path = require("path");
 
 routes.get("/view", function(req, res){
-	product.find({}, function(err, result){
-		var pagedata = { title : "View All Product", pagename : "admin/view_product", result: result};
-		res.render("admin_layout", pagedata);
+	product.find({}, function(err,result){
+	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
+	res.render("admin_layout", pagedata);
 	});
 });
+
 routes.get("/delete/:id", function(req, res){
 	product.delete({ _id : new mongodb.ObjectId(req.params.id)}, function(err, result){
 		res.redirect("/admin/product/view");
@@ -41,13 +44,22 @@ routes.get("/add", function(req, res){
 
 	});
 
-
 });
 
 routes.post("/add", function(req, res){
-	product.insert(req.body, function(err, result){
-		res.redirect("/admin/product/view");
+	var name = namechange(req.files.image.name);
+	var dir = path.resolve();
+	req.files.image.mv(dir+"/public/products/"+name, function(err){
+
+		req.body.image = name;
+
+		product.insert(req.body, function(err, result){
+			res.redirect("/admin/product/view");
+		});
+
 	});
+
+
 });
 
 
