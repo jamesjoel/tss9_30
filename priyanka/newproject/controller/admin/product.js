@@ -74,20 +74,32 @@ routes.get("/edit/:id", function(req,res)
     });
 });
 
-routes.post("/edit",function(req,res){
-    console.log(req.body);
-    var where = {_id : new mongodb.ObjectId(req.body.id)};
+// routes.post("/edit",function(req,res){
+//     console.log(req.body);
+//     var where = {_id : new mongodb.ObjectId(req.body.id)};
+//     delete req.body.id;
+//     console.log(req.body);
+//     product.update(where,req.body,function(err,result)
+//     {
+//         if(err)
+//         {
+//             console.log("Updation Error", err);
+//             return;
+//         }
+//         //console.log(result);
+//         res.redirect("/admin/product/view");
+//     });
+// });
+
+routes.post("/edit", function(req, res){
+    // console.log(req.body);
+	// var where = { _id : new mongodb.ObjectId(req.body.id)};
+    // delete req.body.id;
+    var id = req.body.id;
     delete req.body.id;
-    console.log(req.body);
-    product.update(where,req.body,function(err,result)
-    {
-        if(err)
-        {
-            console.log("Updation Error", err);
-            return;
-        }
-        //console.log(result);
-        res.redirect("/admin/product/view");
-    });
+	product.update({ _id : new mongodb.ObjectId(id)}, req.body, function(err, result){
+		res.redirect("/admin/product/view");
+	});
 });
+
 module.exports = routes;

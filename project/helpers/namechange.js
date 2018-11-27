@@ -5,5 +5,5 @@ module.exports=function(name){
 	var n = arr.length;
 	var ext = arr[n-1];
 	var new_name = crypt_name+"."+ext;
-	return new_name;
+	return [new_name, ext];
 }

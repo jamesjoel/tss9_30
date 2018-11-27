@@ -19,3 +19,9 @@ module.exports.find=function(where, cb){
 		// db.collection("user").find({ city : "ujjain"}).toArray(function(err, result));
 	});
 }
+module.exports.update=function(where, obj, cb){
+	connect(function(err, client){
+		var db = client.db(dbname);
+		db.collection("user").update(where, {$set : obj}, cb);
+	});
+}

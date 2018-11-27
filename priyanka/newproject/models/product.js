@@ -40,16 +40,22 @@ module.exports.delete = function(where,cb)
     });
 }
 
-module.exports.update = function(where,obj,cb)
-{
-    connect(function(err,client)
-    {
-        if(err)
-        {
-            console.log("Updation error", err);
-            return;
-        }
-        var db = client.db(dbname);
-        db.collection("product").update(where,{$set : obj}, cb);
-    });
+// module.exports.update = function(where,obj,cb)
+// {
+//     connect(function(err,client)
+//     {
+//         if(err)
+//         {
+//             console.log("Updation error", err);
+//             return;
+//         }
+//         var db = client.db(dbname);
+//         db.collection("product").update(where,{$set : obj}, cb);
+//     });
+// }
+module.exports.update=function(where, obj, cb){
+	connect(function(err, client){
+		var db = client.db(dbname);
+		db.collection("product").update(where, { $set : obj}, cb);
+	});	
 }

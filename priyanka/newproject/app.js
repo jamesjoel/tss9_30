@@ -7,6 +7,7 @@ var nocache = require("nocache");
 var flash = require("express-flash");
 var sha1 = require("sha1");
 var category = require("./models/category");
+var upload = require("express-fileupload");
 
 
 app.use(express.static(__dirname+"/public"));
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(session({secret : "TSS9"}));
 app.use(nocache());
 app.use(flash());
+app.use(upload());
 app.use(function(req,res,next)
 {
     res.locals.session = req.session;
