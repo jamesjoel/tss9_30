@@ -25,3 +25,16 @@ module.exports.find= function(where , cb)
         db.collection("user").find(where).toArray(cb);
     });
 }
+
+module.exports.update = function (where,obj,cb){
+    connect(function(err,client)
+    {
+        if(err)
+        {
+            console.log("Change password updation err",err);
+            return;
+        }
+        var db = client.db(dbname);
+        db.collection("user").update(where , {$set : obj}, cb);
+    });
+}

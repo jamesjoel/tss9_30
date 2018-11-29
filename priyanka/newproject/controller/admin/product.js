@@ -3,6 +3,8 @@ var routes = express.Router();
 var category = require("../../models/category");
 var product = require("../../models/product");
 var mongodb = require("mongodb");
+var namechange = require("../../helpers/namechange");
+var path = require("path");
 
 routes.get("/view", function(req,res)
 {
@@ -24,21 +26,42 @@ routes.get("/add",function(req,res)
         {
             console.log("Product add Error",err);
         }
-        var pagedata = {title :"Add New Product", pagename : "admin/product/add_product", result:result};
+        var pagedata = {title :"Add New Product", pagename : "admin/product/add_product", result:result, message : req.flash("msg")};
         res.render("admin_layout", pagedata);
     });
 });
 
 routes.post("/add", function(req,res)
 {
-    product.insert(req.body,function(err,result)
-    {
-        if(err)
+    //console.log(req.files.image);
+    var arr = namechange(req.files.image.name);
+    var name = arr[0];
+    var ext = arr[1];
+    var p_resolve = path.resolve();
+    //console.log(p_resolve);
+
+        if(ext == "jpg" || ext == "jpeg" ||ext=="png" || ext=="gif")
         {
-            console.log("Product Insertion Error", err);
+            req.files.image.mv(p_resolve+"/public/products/"+name , function(err)
+            {
+                if(err)
+                {
+                    console.log("Product Namechange Error", err);
+                    return;
+                 }
+                req.body.image=name;
+                req.body.price=parseInt(req.body.price); 
+                product.insert(req.body,function(err,result)
+                {
+                if(err)
+                {
+                    console.log("Product Updation Error", err);
+                    return;
+                }
+                res.redirect("/admin/product/view");
+                });
+            });    
         }
-        res.redirect("/admin/product/view");
-    });
 });
 
 routes.get("/delete/:id",function(req,res)
@@ -74,32 +97,17 @@ routes.get("/edit/:id", function(req,res)
     });
 });
 
-// routes.post("/edit",function(req,res){
-//     console.log(req.body);
-//     var where = {_id : new mongodb.ObjectId(req.body.id)};
-//     delete req.body.id;
-//     console.log(req.body);
-//     product.update(where,req.body,function(err,result)
-//     {
-//         if(err)
-//         {
-//             console.log("Updation Error", err);
-//             return;
-//         }
-//         //console.log(result);
-//         res.redirect("/admin/product/view");
-//     });
-// });
-
-routes.post("/edit", function(req, res){
-    // console.log(req.body);
-	// var where = { _id : new mongodb.ObjectId(req.body.id)};
-    // delete req.body.id;
-    var id = req.body.id;
+routes.post("/edit", function(req,res){
+    var where= { _id : new mongodb.ObjectId(req.body.id)};
     delete req.body.id;
-	product.update({ _id : new mongodb.ObjectId(id)}, req.body, function(err, result){
-		res.redirect("/admin/product/view");
-	});
+    product.update(where, req.body,function(err,result){
+        if(err)
+        {
+            console.log("Product Updation error", err);
+            return;
+        }
+            res.redirect("/admin/product/view");
+    });
 });
 
 module.exports = routes;
