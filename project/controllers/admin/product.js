@@ -56,6 +56,7 @@ routes.post("/add", function(req, res){
 		req.files.image.mv(dir+"/public/products/"+name, function(err){
 
 			req.body.image = name;
+			req.body.price = parseInt(req.body.price);
 
 			product.insert(req.body, function(err, result){
 				res.redirect("/admin/product/view");
