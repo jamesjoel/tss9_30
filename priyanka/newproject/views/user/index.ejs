@@ -1,51 +1,50 @@
-<div class="container"></div>
-    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
-        <h4> Welcome User</h4>
-        <p class="text-success">
-            <%= message %>
-        </p>
-        <table class="table table-bordered">
-            <%
-            if(result.image)
-            {
-                var path = "/user"+result.image;
-            }
-            else
-            {
-                var path = "/images/avatar.png";
-            }
-            %>
-            <tr>
-                <td>Full Name</td>
-                <td><%= result.full_name %></td>
-            </tr>
-            <tr>
-                <td>User Name</td>
-                <td><%= result.username %></td>
-            </tr>
-            <tr>
-                <td>Image</td>
-                <td><img src="<%= path %>" height="100" width="100"/></td>
-                <a href="/user/changeimg">Change Image</a>
-            </tr> 
-            <tr>
-                <td>Address</td>
-                <td><%= result.address %></td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td><%= result.gender %></td>
-            </tr>
-            <tr>
-                <td>City</td>
-                <td><%= result.city %></td>
-            </tr>
-            <tr>
-                <td>Contact</td>
-                <td><%= result.contact %></td>
-            </tr>
-        </table> 
-        <a href="/user/changepass">Change Password</a> |  
-        <a href="#">Edit Profile</a>   
-    </div>
+<div class="container">
+    <h2> Welcome User </h2>
+    <p class="text-success">
+        <%= message %>
+    </p>
+    <table class="table table-bordered">
+        <%
+        if(result.image)
+        {
+            var path = "/user/"+ result.image;
+        }
+        else
+        {
+            var path = "/images/avatar.png";
+        }
+        %>
+        <tr>
+            <td> Full Name </td>
+            <td> <%= result.full_name %> </td>
+        </tr>
+        <tr>
+            <td> UserName </td>
+            <td> <%= result.username %> </td>
+        </tr>
+        <tr>
+            <td> Image </td>
+            <td> <img src="<%= path %>" height="100" width="100"/>
+            <a href="/user/changeimg"> Change Image </a> </td>
+        </tr>
+        <tr>
+            <td> Address </td>
+            <td> <%= result.address %> </td>
+        </tr>
+        <tr>
+            <td> Gender </td>
+            <td> <%= result.gender %> </td>
+        </tr>
+        <tr>
+            <td> City </td>
+            <td> <%= result.city %> </td>
+        </tr>
+        <tr>
+            <td> Contact </td>
+            <td> <%= result.contact %> </td>
+        </tr>
+    </table>
+    <a href="/user/changepass"> Change Password</a> | 
+    <a href="/user/edit/<%= result._id %>">Edit Profile </a> 
+
 </div>

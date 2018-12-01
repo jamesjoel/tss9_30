@@ -70,7 +70,7 @@ routes.post("/changepass", function(req,res)
             console.log("Changing password error", err);
             return;
         }
-        if(result[0]==sha1(a))
+        if(result[0].password==sha1(a))
         {
             if(b==c)
             {
@@ -99,4 +99,39 @@ routes.post("/changepass", function(req,res)
         }
     });
 });
+
+routes.get("/edit/:id", function(req,res)
+{
+    user.find({_id : new mongo.ObjectId(req.params.id)}, function(err,result)
+    {
+        if(err)
+        {
+            console.log("Editing profile error",err);
+            return;
+        }
+        var pagedata = {title:"Edit Profile Page", pagename : "user/edit_profile",result:result[0]};
+        res.render("layout",pagedata);
+    });
+});
+
+routes.post("/edit",function(req,res)
+{   
+    //console.log(req.body);
+    var where = { _id : new mongo.ObjectId(req.body.id)};
+    delete req.body.id;
+    //console.log(req.body);
+    user.update(where, req.body , function(err,result)
+    {
+        if(err)
+        {
+            console.log("Profile Updation error", err);
+            return;
+        } 
+            res.redirect("/user");
+
+        
+    });
+});
+
+
 module.exports = routes;

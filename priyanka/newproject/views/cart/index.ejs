@@ -1,0 +1,30 @@
+<div class="container">
+    <h2> Your Cart </h2>
+    <a href="/cart/clearcart"> Clear All </a>
+    <table class="table table-bordered">
+        <tr>
+            <td>S.No.</td>
+            <td>Product Name</td>
+            <td>Image</td>
+            <td>Price</td>
+            <td>Delete</td>
+        </tr>
+        <% var total=0;
+           result.forEach(function(item,index)
+           {
+               total+=item.price;
+               %>
+               <tr>
+                <td><%= index+1%> </td>
+                <td> <%= item.name %> </td>
+                <td> <img src="/products/<%= item.image %>" height="70" width= "70"/></td>
+                <td> <%= item.price %> </td>
+                <td> <a href="/cart/delete/<%= item._id %>"> Delete </a> </td>    
+               </tr>
+            <% }) %>
+            <tr>
+                <td colspan="4" align="right"> Grand Total </td>
+                <td> <%= total %> </td>
+            </tr> 
+    </table>
+</div>

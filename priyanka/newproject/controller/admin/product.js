@@ -12,6 +12,7 @@ routes.get("/view", function(req,res)
         if(err)
         {
             console.log("View error",err);
+            return;
         }
         var pagedata = {title : "View All Product", pagename : "admin/product/view_product", result :result};
         res.render("admin_layout",pagedata);

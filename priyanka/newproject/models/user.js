@@ -31,7 +31,7 @@ module.exports.update = function (where,obj,cb){
     {
         if(err)
         {
-            console.log("Change password updation err",err);
+            console.log("Updation error",err);
             return;
         }
         var db = client.db(dbname);

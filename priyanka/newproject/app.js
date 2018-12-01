@@ -19,9 +19,22 @@ app.use(flash());
 app.use(upload());
 app.use(function(req,res,next)
 {
+    var total=0;
+    if(req.cookies.pid)
+    {
+        var ids = req.cookies.pid;
+        var arr = ids.split("#");
+        total=arr.length;
+    }
+    res.locals.total=total;
     res.locals.session = req.session;
     category.find({},function(err,result)
     {
+        if(err)
+        {
+            console.log("category find error", err);
+            return;
+        }
         res.locals.category=result;
         next();
     });
