@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <body>
+            <h1>This is Home Page</h1>
+            <table align="center" border="1">
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>City</th>
+                </tr>
+                <% arr.forEach(function(item,index){ %>
+                <tr>
+                    <td><%=index+1%></td>
+                <td><% = item.full_name%></td>
+                <td> <%=item.city%></td>
+                </tr>
+                <% } %>
+            </table>
+        </body>
+    </head>
+</html>

@@ -12,7 +12,7 @@ app.get("/", function(req,res){
             return;
         }
         var db= client.db("tss");
-        db.collection("user").find().toArray(function(err,result)
+        db.collection("user").find().toArray function(err,result)
         {
             if(err)
             {
