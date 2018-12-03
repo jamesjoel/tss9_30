@@ -9,6 +9,7 @@ routes.use("/signup", require("../controller/signup"));
 routes.use("/user", backdoor, require("../controller/user"));
 routes.use("/logout", require("../controller/logout"));
 routes.use("/admin", require("../controller/admin/routes"));
+routes.use("/cart", require("../controller/cart"));
 
 function backdoor(req, res, next)
 {

@@ -3,7 +3,7 @@ var routes=express.Router();
 
 routes.get("/",function (req,res){
 	var pagedata={pagename:"contact/index",title:"Contact"};
-	res.render(layout,pagedata);
+	res.render("layout",pagedata);
 });
 
 module.exports=routes;
