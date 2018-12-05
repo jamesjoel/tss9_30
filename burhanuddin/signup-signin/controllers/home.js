@@ -3,9 +3,31 @@ var routes = express.Router();
 var user = require('../models/user');
 var mongodb = require('mongodb');
 
+var emptyCookieValue = '';
+
 routes.get('/', function(req, res) {
-	var pageData = { title : "Sign Up" , pageName : 'home/index', usernameErrorMsg : req.flash("usernameErrorMsg"), emailErrorMsg : req.flash("emailErrorMsg")};
-    res.render('layout', pageData);
+	if(req.cookies.getUserName == undefined || req.cookies.getUserEmail == undefined) {
+		var getUserName = res.cookie("getUserName", emptyCookieValue, { expire : new Date(Date.now()+3600000), httpOnly : true});
+		var getUserEmail = res.cookie("getUserEmail", emptyCookieValue, { expire : new Date(Date.now()+3600000), httpOnly : true});
+		var cookieObj = {
+			uname : req.cookies.getUserName,
+			uemail : req.cookies.getUserEmail
+		}
+		var pageData = { title : "Home" , pageName : 'home/index', usernameErrorMsg : req.flash("usernameErrorMsg"), emailErrorMsg : req.flash("emailErrorMsg"), cookieObj : cookieObj };
+		res.render('layout', pageData);
+	} else if (req.cookies.getUserName || req.cookies.getUserEmail) {
+		var cookieObj = {
+			uname : req.cookies.getUserName,
+			uemail : req.cookies.getUserEmail
+		}
+		var pageData = { title : "Home" , pageName : 'home/index', usernameErrorMsg : req.flash("usernameErrorMsg"), emailErrorMsg : req.flash("emailErrorMsg"), cookieObj : cookieObj};
+		res.render('layout', pageData);
+	} else {
+		var pageData = { title : "Home" , pageName : 'home/index', usernameErrorMsg : req.flash("usernameErrorMsg"), emailErrorMsg : req.flash("emailErrorMsg") };
+		res.render('layout', pageData);	
+	}
+	// var pageData = { title : "Sign Up" , pageName : 'home/index', usernameErrorMsg : req.flash("usernameErrorMsg"), emailErrorMsg : req.flash("emailErrorMsg")};
+    // res.render('layout', pageData);
 });
 
 // Find
@@ -15,26 +37,21 @@ routes.get('/user-lists', function(req, res) {
 			console.log(err);
 			return;
 		} else {
-			if (req.cookies.getUsername || req.cookies.getUserEmail) {
-				var cookieObj = {
-					uname : req.cookies.getUsername,
-					uemail : req.cookies.getUseremail
-				}
-				var pageData = { title : "Home" , pageName : 'home/user-lists' , result : result , cookieObj : cookieObj};
-				res.render('layout', pageData);
-			} else {
-				var pageData = { title : "Home" , pageName : 'home/user-lists' , result : result };
-				res.render('layout', pageData);	
-			}
+			var pageData = { title : "Home" , pageName : 'home/user-lists' , result : result };
+			res.render('layout', pageData);	
 		}
 	});
 });
 
+
 // Insert
+var checkUsername = '';
+var checkEmail = '';
+
 routes.post('/', function(req, res) {
 	var checkUsername = req.body.username;
 	var checkEmail = req.body.email;
-	var getUsername = res.cookie("getUsername", checkUsername, { expire : new Date(Date.now()+3600000), httpOnly : true});
+	var getUserName = res.cookie("getUserName", checkUsername, { expire : new Date(Date.now()+3600000), httpOnly : true});
 	var getUserEmail = res.cookie("getUserEmail", checkEmail, { expire : new Date(Date.now()+3600000), httpOnly : true});
 	user.find( { $or : [{ username : checkUsername }, { email : checkEmail}] }, function(err, result) {
 		if(err) {
@@ -58,6 +75,8 @@ routes.post('/', function(req, res) {
 						return;
 					} else {
 						console.log('Sign Up Sucsessful');
+						res.clearCookie("getUserName");
+						res.clearCookie("getUserEmail");						
 						res.redirect('/');
 					}
 				});
