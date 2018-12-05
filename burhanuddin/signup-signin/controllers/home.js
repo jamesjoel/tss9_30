@@ -27,24 +27,25 @@ routes.get('/user-lists', function(req, res) {
 // Insert
 routes.post('/', function(req, res) {
 	console.log(req.body);
-	/*
-	user.insert(req.body, function(err, result) {
-		if(err) {
-			console.log('getting error');
-			console.log(err);
-			return;
-		} else {
-			console.log('Sign Up Sucsessful');
-			res.redirect('/');
-		}
-	});
-	*/
+	
+	// user.insert(req.body, function(err, result) {
+	// 	if(err) {
+	// 		console.log('getting error');
+	// 		console.log(err);
+	// 		return;
+	// 	} else {
+	// 		console.log('Sign Up Sucsessful');
+	// 		res.redirect('/');
+	// 	}
+	// });
+	
 
 	var checkUsername = req.body.username;
 	var checkEmail = req.body.email;
 	
 	user.find( { $or : [{ username : checkUsername }, { email : checkEmail}] }, function(err, result) {
 		// console.log(username);
+		console.log(result);
 		if(err) {
 			console.log(err);
 			return;
