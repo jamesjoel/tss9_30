@@ -7,7 +7,7 @@ var namechange=require("../../helpers/namechange");
 var path = require("path");
 
 routes.get("/view", function(req, res){
-	product.find({}, function(err,result){
+	product.findProductCate(function(err,result){
 	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
 	res.render("admin_layout", pagedata);
 	});

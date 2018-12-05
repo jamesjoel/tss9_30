@@ -5,6 +5,7 @@
 		<th>Name</th>
 		<th>Price</th>
 		<th>Discount</th>
+		<th>Category</th>
 		<th>Image</th>
 		<th>Edit</th>
 		<th>Delete</th>
@@ -15,6 +16,7 @@
 			<td><%= item.name %></td>
 			<td><%= item.price %></td>
 			<td><%= item.discount %></td>
+			<td><%= item.cate_data[0].name %></td>
 			<td><img src="/products/<%= item.image; %>" height="50" width="50" /></td>
 			<td><a href="/admin/product/edit/<%= item._id %>" class="btn btn-sm btn-info">Edit</a></td>
 			<td><a href="/admin/product/delete/<%= item._id %>" class="btn btn-sm btn-danger">Delete</a></td>
