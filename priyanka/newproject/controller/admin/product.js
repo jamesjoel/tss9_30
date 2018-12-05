@@ -8,12 +8,13 @@ var path = require("path");
 
 routes.get("/view", function(req,res)
 {
-    product.find({}, function(err,result){
+    product.findProductCate(function(err,result){
         if(err)
         {
             console.log("View error",err);
             return;
         }
+        console.log(result);
         var pagedata = {title : "View All Product", pagename : "admin/product/view_product", result :result};
         res.render("admin_layout",pagedata);
     });
