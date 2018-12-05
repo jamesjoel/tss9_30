@@ -22,34 +22,45 @@ routes.get('/', function(req, res) {
 
 
 // Insert
+
 routes.post('/', function(req, res) {
-	var arr = nameChanger(req.files.photo.name);
-	var name = arr[0];
-	var ext = arr[1];
-	var dir = path.resolve();
-	if(ext == "jpg" || ext == "jpeg" || ext == "png" || ext =="gif") {
-		req.files.photo.mv(dir + "/public/images/" + name , function(err) {
+	if (req.files.photo == undefined) {
+		user.insert(req.body, function(err, result) {
 			if(err) {
 				console.log(err);
 				return;
 			} else {
-				req.body.photo = name;
-				user.insert(req.body, function(err, result) {
-					if(err) {
-						console.log(err);
-						return;
-					} else {
-						res.redirect('/');
-					}
-				});
+				res.redirect('/');
 			}
-		});
+		});	
 	} else {
-		req.flash("errorMessage", "This File Type Not Allowed");
-		res.redirect('/');
+		var arr = nameChanger(req.files.photo.name);
+		var name = arr[0];
+		var ext = arr[1];
+		var dir = path.resolve();
+		if(ext == "jpg" || ext == "jpeg" || ext == "png" || ext =="gif") {
+			req.files.photo.mv(dir + "/public/images/" + name , function(err) {
+				if(err) {
+					console.log(err);
+					return;
+				} else {
+					req.body.photo = name;
+					user.insert(req.body, function(err, result) {
+						if(err) {
+							console.log(err);
+							return;
+						} else {
+							res.redirect('/');
+						}
+					});
+				}
+			});
+		} else {
+			req.flash("errorMessage", "This File Type Not Allowed");
+			res.redirect('/');
+		}
 	}
 });
-
 
 // Delete
 routes.get('/delete/:id', function(req, res) {
@@ -58,12 +69,13 @@ routes.get('/delete/:id', function(req, res) {
 			console.log(err);
 			return;
 		} else {
-			console.log(result);
-			console.log(result[0].photo);
 			var imgName = result[0].photo;
 			var dir = path.resolve();
 			fs.unlink(dir + "/public/images/" + imgName, function(err) {
-				if (err) throw err;
+				if (err) {
+					console.log(err);
+					return;
+				}
 				console.log('File deleted!');
 			});
 			user.delete({ _id : new mongodb.ObjectId(req.params.id) }, function(err, result) {
@@ -95,6 +107,59 @@ routes.get('/edit/:id', function(req, res) {
 
 
 // Update
+
+routes.post('/edit', function(req, res) {
+	var where = { _id : new mongodb.ObjectId(req.body.id) };
+	var oldPhoto = req.body.oldPhoto;
+	delete req.body.id;
+	delete req.body.oldPhoto;
+	if (req.files.photo == undefined) {
+		user.update(where, req.body, function(err, result) {
+			if(err) {
+				console.log(err);
+				return;
+			} else {
+				res.redirect('/');
+			}
+		});	
+	} else {
+		var arr = nameChanger(req.files.photo.name);
+		var name = arr[0];
+		var ext = arr[1];
+		var dir = path.resolve();
+		fs.unlink(dir + "/public/images/" + oldPhoto, function(err) {
+			if (err) {
+				console.log("Getting Error When deleting File"+ err);
+			} else {
+				console.log('File deleted!');
+			}
+		  });
+		if(ext == "jpg" || ext == "jpeg" || ext == "png" || ext =="gif") {
+			req.files.photo.mv(dir + "/public/images/" + name , function(err) {
+				if(err) {
+					console.log(err);
+					return;
+				} else {
+					req.body.photo = name;
+					user.update(where, req.body, function(err, result) {
+						if(err) {
+							console.log(err);
+							return;
+						} else {
+							res.redirect('/');
+						}
+					});
+				}
+			});
+		} else {
+			req.flash("errorMessage", "This File Type Not Allowed");
+			res.redirect('/');
+		}
+	}
+});
+
+// Old Update Query
+/*
 routes.post('/edit', function(req, res) {
 	var where = { _id : new mongodb.ObjectId(req.body.id) };
 	var oldPhoto = req.body.oldPhoto;
@@ -133,5 +198,7 @@ routes.post('/edit', function(req, res) {
 		res.redirect('/');
 	}
 });
+*/
+
 
 module.exports = routes;

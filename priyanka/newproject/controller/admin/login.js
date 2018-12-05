@@ -22,7 +22,7 @@ routes.post("/", function(req,res)
         }
     if(result.length>0)
     {
-        if(result[0].password==sha1(p))
+        if(result[0].password==p)
         {
             req.session.is_admin_logged_in = true;
             res.redirect("/admin/dashboard");

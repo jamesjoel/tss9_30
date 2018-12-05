@@ -1,0 +1,10 @@
+
+
+
+
+
+ejs(home/index)
+
+  <!--  <% category.forEach(function(item){ %>
+                        <li class="list-group-item"><a href="#"><%= item.name %></a></li>
+                    <%})%> -->
