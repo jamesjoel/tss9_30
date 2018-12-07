@@ -1,0 +1,20 @@
+
+	<h2>Home Page</h2>
+	
+	<table class="table table-bordered">
+		<tr>
+			<th>S.No.</th>
+			<th>Name</th>
+			<th>Salary</th>
+			<th>City</th>
+		</tr>
+		<% result.forEach(function(item, index){ %>
+			<tr>
+				<td><%= index+1 %></td>
+				<td><%= item.name %></td>
+				<td><%= item.salary %></td>
+				<td><%= item.city %></td>
+			</tr>
+	<% }) %>
+	</table>
+

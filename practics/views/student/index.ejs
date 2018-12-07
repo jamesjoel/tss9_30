@@ -1,0 +1,66 @@
+<h1>View All Student</h1>
+<button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add New</button>
+<Br />
+<Br />
+<table class="table table-hover table-bordered table-striped">
+	<tr>
+		<th>S.No.</th>
+		<th>Name</th>
+		<th>Fee</th>
+		<th>Age</th>
+		<th>Class</th>
+	</tr>
+	<% result.forEach(function(item, index){ %>
+	<tr>
+		<td><%= index+1 %></td>
+		<td><%= item.name %></td>
+		<td><%= item.fee %></td>
+		<td><%= item.age %></td>
+		<td><%= item.class %></td>
+ <% }) %>
+</table>
+
+
+
+
+
+
+<br />
+<div class="modal fade" id="addModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Add New Student Here</h2>
+			</div>
+			<form action="/" method="post">
+				
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Student Name</label>
+					<input name="name" type="text" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Fee</label>
+					<input type="text" name="fee" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Age</label>
+					<input type="text" name="age" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Class</label>
+					<select class="form-control" name="class">
+						<option>Select</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+					</select>
+				</div>
+				<input type="submit" value="Add" class="btn btn-primary">
+				<input type="button" value="Cancle" class="btn btn-default">
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
