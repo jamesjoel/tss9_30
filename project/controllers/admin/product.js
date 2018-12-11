@@ -7,7 +7,7 @@ var namechange=require("../../helpers/namechange");
 var path = require("path");
 
 routes.get("/view", function(req, res){
-	product.find({}, function(err,result){
+	product.findProductCate(function(err,result){
 	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
 	res.render("admin_layout", pagedata);
 	});
@@ -57,6 +57,7 @@ routes.post("/add", function(req, res){
 
 			req.body.image = name;
 			req.body.price = parseInt(req.body.price);
+			req.body.discount = parseInt(req.body.discount);
 
 			product.insert(req.body, function(err, result){
 				res.redirect("/admin/product/view");

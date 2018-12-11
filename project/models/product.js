@@ -26,3 +26,26 @@ module.exports.update=function(where, obj, cb){
 		db.collection("product").update(where, { $set : obj}, cb);
 	});	
 }
+module.exports.findProductCate=function(cb){
+    connect(function(err,client)
+    {
+        if(err)
+        {
+            console.log("connection error", err);
+        }
+        var db = client.db(dbname);
+        db.collection("product").aggregate([
+            {
+                $addFields : { demo : { $toObjectId : "$category"}}
+            },
+            {
+                $lookup : {
+                    from : "category",
+                    localField : "demo",
+                    foreignField : "_id",
+                    as : "cate_data"
+                }
+            }
+        ]).toArray(cb);
+    });
+}

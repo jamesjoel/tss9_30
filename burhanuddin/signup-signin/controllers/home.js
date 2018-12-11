@@ -45,8 +45,25 @@ routes.get('/user-lists', function(req, res) {
 
 
 // Insert
+<<<<<<< HEAD
+routes.post('/', function(req, res) {
+	console.log(req.body);
+	
+	// user.insert(req.body, function(err, result) {
+	// 	if(err) {
+	// 		console.log('getting error');
+	// 		console.log(err);
+	// 		return;
+	// 	} else {
+	// 		console.log('Sign Up Sucsessful');
+	// 		res.redirect('/');
+	// 	}
+	// });
+	
+=======
 var checkUsername = '';
 var checkEmail = '';
+>>>>>>> 16bf8c07788d4705c362eed550913beff813a4ad
 
 routes.post('/', function(req, res) {
 	var checkUsername = req.body.username;
@@ -54,6 +71,11 @@ routes.post('/', function(req, res) {
 	var getUserName = res.cookie("getUserName", checkUsername, { expire : new Date(Date.now()+3600000), httpOnly : true});
 	var getUserEmail = res.cookie("getUserEmail", checkEmail, { expire : new Date(Date.now()+3600000), httpOnly : true});
 	user.find( { $or : [{ username : checkUsername }, { email : checkEmail}] }, function(err, result) {
+<<<<<<< HEAD
+		// console.log(username);
+		console.log(result);
+=======
+>>>>>>> 16bf8c07788d4705c362eed550913beff813a4ad
 		if(err) {
 			console.log(err);
 			return;
