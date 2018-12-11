@@ -1,0 +1,16 @@
+	<br/>
+	<br/>
+		<% result.forEach(function(item){ %>
+				<div class="col-md-3">
+					<img src="/images/<%= item.image %>" height="200" width="200" /> <br/>
+  					<a href="/delete/<%=item._id%>"> Delete </a>		 	
+				</div>
+
+  			 	<% }); %>
+  	<!-- <form action="/delete" method="post">
+  		<% result.forEach(function(item){ %>
+  			<input type="submit" value = "<%= item.image%>"/>
+  		<% }) %>
+  	</form>	 -->	 	
+
+  	

@@ -1,0 +1,6 @@
+<% result.forEach(function(item){ %>
+	<div class="col-md-3" >
+		<img src="/images/<%= item.image %>" height="80" width="80" /> 
+		<a href="/delete/<%= item._id %>"> Delete </a>
+	</div>
+<% }) %>

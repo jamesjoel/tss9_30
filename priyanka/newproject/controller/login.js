@@ -19,6 +19,7 @@ routes.post("/", function(req,res)
         if(err)
         {
             console.log("Query error", err);
+            return;
         }
         if(result.length > 0)
         {
@@ -44,4 +45,6 @@ routes.post("/", function(req,res)
         }
     });
 });
+
+
 module.exports=routes;
