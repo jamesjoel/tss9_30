@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io();
+		function send()
+		{
+			var a = document.getElementById("msg").value;
+			socket.emit("sending", { msg : a });
+		}
+
+		socket.on("send_to_server", function(data){
+			var x = data.msg;
+			document.getElementById("show_msg").innerHTML+="<p>"+x+"</p>";
+		});
+
+	</script>
+</head>
+<body>
+<h1>Hello world</h1>
+Message <input type="text" id="msg" />
+<br />
+<button onclick="send()">ok</button>
+<div id="show_msg"></div>
+
+<!-- 
+<button onclick="demo()">DEMO</button>
+<br />
+<input type="text" id="my_txt"/>
+<h2 id="show_msg"> james jeol </h2>
+
+
+<script type="text/javascript">
+	function demo()
+	{
+		var x = document.getElementById("my_txt").value;
+		document.getElementById("show_msg").innerHTML=x;
+		// var x = document.getElementById("show_msg").innerHTML;
+		// document.getElementById("my_txt").value=x;
+		
+	}
+</script> -->
+</body>
+</html>
