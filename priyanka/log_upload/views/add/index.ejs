@@ -1,0 +1,31 @@
+<div class="container">
+	<button class="btn btn-default" data-toggle="modal" data-target="#mymodal"> Add Image</button>
+<br/>
+<br/>
+<a href="/view"> View Images </a>
+<br/>
+<br/>
+
+	<div class="modal fade" id="mymodal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"> 
+					<h4> Add Image Here </h4>
+				 </div>
+				 <div class="modal-body">
+					<form action="/add" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label> Image </label>
+							<input type="file" name="image" class="form-control"/>
+						</div>
+				</div>
+				<div class="modal-footer">		
+					<input type="submit" class="form-control" value="Upload" />
+				</div>		
+					</form>
+			</div>
+		</div>
+
+	</div>
+	<%= message %>
+</div>

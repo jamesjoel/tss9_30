@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-offset-4 ">
+		<form action="/signup" method="post">
+			<div class="form-group">
+				<label> Fullname </label>
+				<input type="text" name="name" placeholder="Fullname" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label> Username </label>
+				<input type="text" name="username" placeholder="Username" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label> Password </label>
+				<input type="password" name="password" placeholder="Password" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label> Re-password</label>
+				<input type="password" placeholder="Re-Password" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+				<label> Address </label>
+				<textarea class="form-control" name="address"></textarea>
+			</div>
+			<div class="form-group">
+				<label> Contact </label>
+				<input type="text" placeholder="Contact" name="contact" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label> City </label>
+				<select class="form-control" name="city">
+					<option> Select </option>
+					<option> Indore </option>
+					<option> Ahemdabad </option>
+					<option> Pune </option>
+					<option> Hyderabad </option>
+					<option> Mumbai </option>
+					<option> Bengaluru </option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label> Gender </label> 
+				Male <input type="radio" name="gender" value="male"/>
+				Female <input type="radio" name="gender" value="female"/>
+			</div>
+			<button class="btn btn-success" type="submit"> Signup </button>
+			<button class="btn btn-success" type="button"> Cancel </button>
+		</form>	
+	</div>
+</div>	
