@@ -7,24 +7,59 @@
 		var socket = io();
 		function send()
 		{
-			var a = document.getElementById("msg").value;
-			socket.emit("sending", { msg : a });
+			var name = document.getElementById("name").value;
+			var msg = document.getElementById("msg").value;
+			if(name=="")
+			{
+				document.getElementById("name").setAttribute("placeholder", "Please Insert Your Name");
+				document.getElementById("name").style.border="1px solid red";
+			}
+			else
+			{
+
+				document.getElementById("name").style.border="1px solid #CCC";
+				if(msg=="")
+				{
+					document.getElementById("msg").setAttribute("placeholder", "Please Insert Your Message");
+				document.getElementById("msg").style.border="1px solid red";		
+				}
+				else
+				{
+					document.getElementById("msg").style.border="1px solid #CCC";
+					var send_obj = { msg : msg, name : name};
+					socket.emit("sending", send_obj);
+
+					document.getElementById("msg").value="";
+					var str = "<p><b>You : </b>"+msg+"</p>";
+					document.getElementById("show_msg").innerHTML+=str;
+				}
+
+				
+
+
+			}
 		}
 
 		socket.on("send_to_server", function(data){
-			var x = data.msg;
-			document.getElementById("show_msg").innerHTML+="<p>"+x+"</p>";
+			var a = data.name;
+			var b = data.msg;
+			
+			var str = "<p><b>"+a+"</b> : "+b+"</p>";
+
+			document.getElementById("show_msg").innerHTML+=str;
 		});
 
 	</script>
 </head>
 <body>
-<h1>Hello world</h1>
-Message <input type="text" id="msg" />
+<div style="background-color: #2451AC; width: 400px; padding: 20px; margin: 20px auto;">
+	<input type="text" style="height: 30px; width: 340px;" id="name" placeholder="Your Name">
 <br />
-<button onclick="send()">ok</button>
-<div id="show_msg"></div>
-
+<h4 style="margin: 0; padding: 10px;">Chat Box</h4>
+<div id="show_msg" style="margin: 0 auto; min-height: 400px; width: 400px; background-color: #FFF; overflow-y: scroll;"></div>
+<input type="text" id="msg" style="height: 30px; width: 340px;" placeholder="Your Message" />
+<button onclick="send()">Send</button>
+</div>
 <!-- 
 <button onclick="demo()">DEMO</button>
 <br />

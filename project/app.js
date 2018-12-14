@@ -41,12 +41,12 @@ app.use(function(req, res, next){
 
 
 
-var routes = require("./config/routes");
+// var routes = require("./config/routes");
 app.set("view engine", "ejs");
 // app.set("views", "pages");
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(routes);
+app.use(require("./config/routes"));
 
 app.listen(3000, function(){
 	console.log("RUNNING");

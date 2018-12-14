@@ -16,10 +16,6 @@ io.on("connection", function(socket){
 		socket.broadcast.emit("send_to_server", data);
 	});
 
-
-
-
-
 	socket.on("disconnect", function(){
 		console.log("a user dissconnect");
 	}); 
