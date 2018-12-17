@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
 	<title><%= title %></title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/vendors/linericon/style.css">
@@ -19,6 +21,31 @@
 	<!-- main css -->
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+	<script type="text/javascript">
+		var socket = io();
+		socket.on("demo", function(data){
+			var str = '<div class="col col1">\
+						<div class="f_p_item">\
+							<div class="f_p_img">\
+								<img class="img-fluid" src="/products/'+data.image+'" height="200" alt="">\
+								<div class="p_icon">\
+									<a href="#">\
+										<i class="lnr lnr-heart"></i>\
+									</a>\
+									<a href="/cart/add/'+data._id+'">\
+										<i class="lnr lnr-cart"></i>\
+									</a>\
+								</div>\
+							</div>\
+							<a href="#">\
+								<h4>'+data.name+'</h4>\
+							</a>\
+							<h6 style="text-decoration: line-through;">$'+data.price+'</h6>\
+						</div>\
+					</div>';
+			$("#pro-box").prepend(str);
+		});
+	</script>
 </head>
 
 <body>

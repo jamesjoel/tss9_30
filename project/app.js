@@ -8,6 +8,10 @@ var flash = require("express-flash");
 var sha1 = require("sha1");
 var upload = require("express-fileupload");
 
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
+
+
 var category = require("./models/category");
 
 app.use(express.static(__dirname+"/public"));
@@ -46,8 +50,8 @@ app.set("view engine", "ejs");
 // app.set("views", "pages");
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(require("./config/routes"));
+app.use(require("./config/routes")(io));
 
-app.listen(3000, function(){
+http.listen(3000, function(){
 	console.log("RUNNING");
 });

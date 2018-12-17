@@ -33,7 +33,7 @@ module.exports.findProductCate=function(cb){
         {
             console.log("connection error", err);
         }
-        var db = client.db(dbname);
+        var db = client.db(dbName);
         db.collection("product").aggregate([
             {
                 $addFields : { demo : { $toObjectId : "$category"}}

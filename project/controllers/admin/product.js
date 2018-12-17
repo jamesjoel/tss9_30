@@ -6,6 +6,10 @@ var mongodb = require("mongodb");
 var namechange=require("../../helpers/namechange");
 var path = require("path");
 
+
+module.exports=function(io){
+
+
 routes.get("/view", function(req, res){
 	product.findProductCate(function(err,result){
 	var pagedata = { title : "View All Product", pagename : "admin/view_product", result : result};
@@ -44,6 +48,8 @@ routes.get("/add", function(req, res){
 
 	});
 
+
+
 });
 
 routes.post("/add", function(req, res){
@@ -60,6 +66,8 @@ routes.post("/add", function(req, res){
 			req.body.discount = parseInt(req.body.discount);
 
 			product.insert(req.body, function(err, result){
+				console.log(result);
+				io.emit("demo", result.ops[0]);
 				res.redirect("/admin/product/view");
 			});
 
@@ -73,14 +81,13 @@ routes.post("/add", function(req, res){
 	}
 
 
-
 });
 
 
 routes.get("/demo/:a/:b/:c", function(req, res){
 	console.log(req.params);
 });
+	return routes;
+}
 
 
-
-module.exports=routes;
