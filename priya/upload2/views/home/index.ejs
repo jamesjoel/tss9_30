@@ -1,0 +1,38 @@
+<div class="container">
+	
+		<% result.forEach(function(item){ %>
+	<div class="col-md-3">
+		<img src="/images/<%= item.photo %>" height="100 "width="100"/> <br/>
+		<a href="/delete/<%= item._id %>" > Delete </a>
+	</div>
+		<% }) %> 
+	<br/>
+	<br/>
+	
+	<button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
+		Add 
+	</button>
+	<div class="modal fade" id="mymodal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal"> X </a>
+					<h3> Add Images </h3>
+				</div>	
+					
+
+				<div class="modal-body">
+				<form action="/" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+	Select File <input type="file" name="photo" class="form-control"/>
+	</div>
+	<br/>
+
+	<input type="submit" class="btn btn-success" value="Upload"/>
+	<input type="button" class="btn btn-danger" value ="Cancel" data-dismiss="modal"/>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
