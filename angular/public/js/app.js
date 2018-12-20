@@ -1,14 +1,23 @@
 var app = angular.module("myApp", []);
 
-app.controller("myCtrl", function($scope){
+app.controller("myCtrl", function($scope, $http){
 
-	$scope.name="rohit";
-	$scope.age=25;
+	$scope.allData=[];
 
-	$scope.data={};
-	$scope.data.name="james";
-	$scope.data.gender="male";
-	$scope.data.city="ujjain";
+	$scope.demo=function(){
+
+		$http({
+			url : "/demo",
+			method :"get"
+		}).then(function(res){
+			console.log(res.data);
+			$scope.allData=res.data;
+		});
+
+
+
+
+	}
 
 
 });

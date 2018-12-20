@@ -7,21 +7,8 @@
 
 </head>
 <body ng-controller="myCtrl">
-	<h1>{{ name }}</h1>
-	<h1 ng-bind="name"></h1>
-	<h1>{{ age }}</h1>
-
-
-	<input type="text" ng-model="name" />
-
-	<hr />
-
-	<pre ng-bind="data | json"></pre>
-	<input type="text" ng-model="data.name" />
-
-	Male <input type="radio" ng-model="data.gender" value="male" />
-	Female <input type="radio" ng-model="data.gender" value="female" />
-
+	<button ng-click="demo()">ok</button>
+	<pre ng-bind="allData | json"></pre>
 
 </body>
 </html>
