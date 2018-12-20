@@ -1,0 +1,12 @@
+#content
+{
+    height:auto;
+    min-height: 650px;
+}
+#footer
+{
+    background-color: black;
+    height:100px;
+    color:white;
+    text-align: center;
+}
