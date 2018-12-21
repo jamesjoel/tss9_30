@@ -2,21 +2,22 @@ var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function($scope, $http){
 
-	$scope.allData=[];
+	$scope.newData={};
+	// $scope.newData.name="rohit";
 
-	$scope.demo=function(){
-
+	$scope.save=function(){
 		$http({
-			url : "/demo",
-			method :"get"
+			url : "/",
+			method : "post",
+			data : $scope.newData
 		}).then(function(res){
-			console.log(res.data);
-			$scope.allData=res.data;
+			// console.log(res.data);
+			if(res.data)
+			{
+
+				$("#msgModal").modal("show");
+			}
 		});
-
-
-
-
 	}
 
 
