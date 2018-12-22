@@ -1,0 +1,32 @@
+
+	<h2>Edit</h2>
+	
+
+        <form action="/edit" method="post">
+          <input type="hidden" name="id" value="<%= result.id %>" />
+        <h4 class="modal-title">Edit Employee</h4>
+        <div class="col-md-4 col-md-offset-4">
+        	<div class="form-group">
+        		<label>Full Name</label>
+        		<input value="<%= result.name %>" type="Text" class="form-control" name="name">
+        	</div>
+        	<div class="form-group">
+        		<label>City</label>
+        		<select name="city" class="form-control">
+        			<option>Select</option>
+        			<option <% if(result.city=='indore') { %> selected='selected' <% } %>>indore</option>
+        			<option <% if(result.city=='bhopal') { %> selected='selected' <% } %>>bhopal</option>
+        			<option <% if(result.city=='ujjain') { %> selected='selected' <% } %>>ujjain</option>
+        		</select>
+        	</div>
+        	<div class="form-group">
+        		<label>Salary</label>
+        		<input type="Text" value="<%= result.salary %>" class="form-control" name="salary">
+        	</div>
+          <br />
+          <Br />
+          <input type="submit" value="Update" class="btn btn-primary" />
+      </div>
+      
+  </form>
+

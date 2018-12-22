@@ -1,0 +1,16 @@
+<div class="container">
+	<Br />
+	<Br />
+	<div class="offset-md-4 col-md-4">
+		<form action="/admin/category/edit" method="post">
+		  <div class="form-group">
+		    <label for="email">Category Name</label>
+		    <input value="<%= result.name %>" type="text" name="name" class="form-control">
+		    <input type="hidden" name="id" value="<%= result._id %>" />
+		  </div>
+		  
+		  <button type="submit" class="btn btn-primary">Update</button>
+		</form>
+		
+	</div>
+</div>

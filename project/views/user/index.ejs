@@ -1,0 +1,63 @@
+<section style="margin-top: 150px;" class="feature_product_area section_gap">
+		<div class="main_box">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="main_title">
+						<h2>Welcome</h2>
+						<p class="text-success">
+							<%= message %>
+						</p>
+						<table class="table table-bordered">
+							<%
+							if(result.image)
+							{
+								var path = "/user/"+result.image;
+							}
+							else
+							{
+								var path = "/img/avatar.png";
+							}
+							%>
+							<tr>
+								<td>Full Name</td>
+								<td><%= result.full_name %></td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td><%= result.username %></td>
+							</tr>
+							<tr>
+								<td>Image</td>
+								<td><img src="<%= path %>" height="100" width="100" />
+									<br />
+									<a href="/user/changeimg">Change</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td><%= result.address %></td>
+							</tr>
+							<tr>
+								<td>Gender</td>
+								<td><%= result.gender %></td>
+							</tr>
+							<tr>
+								<td>City</td>
+								<td><%= result.city %></td>
+							</tr>
+							<tr>
+								<td>Contact</td>
+								<td><%= result.contact %></td>
+							</tr>
+
+						</table>	
+						<a href="/user/changepass">Change Password</a> |					
+						<a href="">Edit Profile</a>					
+					</div>
+				</div>
+				
+
+				
+			</div>
+		</div>
+	</section>

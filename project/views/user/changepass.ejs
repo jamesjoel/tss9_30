@@ -1,0 +1,32 @@
+<section style="margin-top: 150px;" class="feature_product_area section_gap">
+		<div class="main_box">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="main_title">
+						<h2>Chnage Password</h2>
+						<form action="/user/changepass" method="post">
+							<div class="form-group">
+								<label>Current Password</label>
+								<input class="form-control" type="password" name="c_pass" />
+							</div>
+							<div class="form-group">
+								<label>New Password</label>
+								<input class="form-control" type="password" name="n_pass" />
+							</div>
+							<div class="form-group">
+								<label>Confirm Password</label>
+								<input class="form-control" type="password" name="cn_pass" />
+							</div>
+							<input type="submit" class="btn btn-primary" value="Change">
+						</form>
+					<p class="text-danger">
+						<%= message %>
+					</p>
+					</div>
+				</div>
+				
+
+				
+			</div>
+		</div>
+	</section>

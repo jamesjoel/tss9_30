@@ -1,0 +1,21 @@
+<div class="container">
+	<Br />
+	<Br />
+	<div class="offset-md-4 col-md-4">
+		<form action="/admin" method="post">
+		  <div class="form-group">
+		    <label for="email">Username</label>
+		    <input type="text" name="username" class="form-control" value="admin" id="email">
+		  </div>
+		  <div class="form-group">
+		    <label for="pwd">Password</label>
+		    <input type="password" value="admin" class="form-control" id="pwd" name="password">
+		  </div>
+		  
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<p class="text-danger text-center">
+			<%= message %>
+		</p>
+	</div>
+</div>

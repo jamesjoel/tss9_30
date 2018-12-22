@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Show All Student</h1>
+<table>
+	<% result.forEach(function(item, index){ %>
+	<tr>
+		<td><%= item.name %></td>
+		<td><%= item.fee %></td>
+		<td><%= item.city %></td>
+		<td><%= item.age %></td>
+	</tr>
+	<% }) %>
+</table>
+</body>
+</html>

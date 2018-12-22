@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
 	<title><%= title %></title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/vendors/linericon/style.css">
@@ -19,9 +21,35 @@
 	<!-- main css -->
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+	<script type="text/javascript">
+		var socket = io();
+		socket.on("demo", function(data){
+			var str = '<div class="col col1">\
+						<div class="f_p_item">\
+							<div class="f_p_img">\
+								<img class="img-fluid" src="/products/'+data.image+'" height="200" alt="">\
+								<div class="p_icon">\
+									<a href="#">\
+										<i class="lnr lnr-heart"></i>\
+									</a>\
+									<a href="/cart/add/'+data._id+'">\
+										<i class="lnr lnr-cart"></i>\
+									</a>\
+								</div>\
+							</div>\
+							<a href="#">\
+								<h4>'+data.name+'</h4>\
+							</a>\
+							<h6 style="text-decoration: line-through;">$'+data.price+'</h6>\
+						</div>\
+					</div>';
+			$("#pro-box").prepend(str);
+		});
+	</script>
 </head>
 
 <body>
+
 
 	<!--================Header Menu Area =================-->
 	<header class="header_area">
@@ -32,16 +60,38 @@
 				</div>
 				<div class="float-right">
 					<ul class="right_side">
-						<li>
-							<a href="/login">
-								Login
-							</a>
-						</li>
-						<li>
-							<a href="/signup">
-								Register
-							</a>
-						</li>
+						<% if(session.is_user_logged_in){ %>
+
+							<li>
+								<a href="/logout">
+									Logout
+								</a>
+							</li>
+							<li>
+								<a href="/user">
+									<%= session.full_name %>
+								</a>
+							</li>
+					<% }else{ %> 
+
+
+							<li>
+								<a href="/login">
+									Login
+								</a>
+							</li>
+							<li>
+								<a href="/signup">
+									Register
+								</a>
+							</li>
+					
+					<% } %>
+
+
+
+
+
 						<li>
 							<a href="#">
 								My Account
@@ -76,18 +126,14 @@
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
 										<ul class="dropdown-menu">
+											<% category.forEach(function(item){ %>
+
 											<li class="nav-item">
-												<a class="nav-link" href="category.html">Shop Category</a>
-												<li class="nav-item">
-													<a class="nav-link" href="single-product.html">Product Details</a>
-													<li class="nav-item">
-														<a class="nav-link" href="checkout.html">Product Checkout</a>
-														<li class="nav-item">
-															<a class="nav-link" href="cart.html">Shopping Cart</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" href="confirmation.html">Confirmation</a>
-														</li>
+												<a class="nav-link" href="#"><%= item.name %></a>
+											</li>
+											
+											<% }) %>
+
 										</ul>
 									</li>
 									<li class="nav-item submenu dropdown">
@@ -126,7 +172,7 @@
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
 									<hr>
 									<li class="nav-item">
-										<a href="#" class="icons">
+										<a href="/search/get" class="icons">
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</a>
 									</li>
@@ -150,8 +196,8 @@
 									<hr>
 
 									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="lnr lnr lnr-cart"></i>
+										<a href="/cart/mycart" class="icons">
+											<i class="lnr lnr lnr-cart"></i>(<%= total %>)
 										</a>
 									</li>
 

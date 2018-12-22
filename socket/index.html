@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io();
+		function send()
+		{
+			var name = document.getElementById("name").value;
+			var msg = document.getElementById("msg").value;
+			if(name=="")
+			{
+				document.getElementById("name").setAttribute("placeholder", "Please Insert Your Name");
+				document.getElementById("name").style.border="1px solid red";
+			}
+			else
+			{
+
+				document.getElementById("name").style.border="1px solid #CCC";
+				if(msg=="")
+				{
+					document.getElementById("msg").setAttribute("placeholder", "Please Insert Your Message");
+				document.getElementById("msg").style.border="1px solid red";		
+				}
+				else
+				{
+					document.getElementById("msg").style.border="1px solid #CCC";
+					var send_obj = { msg : msg, name : name};
+					socket.emit("sending", send_obj);
+
+					document.getElementById("msg").value="";
+					var str = "<p><b>You : </b>"+msg+"</p>";
+					document.getElementById("show_msg").innerHTML+=str;
+				}
+
+				
+
+
+			}
+		}
+
+		socket.on("send_to_server", function(data){
+			var a = data.name;
+			var b = data.msg;
+			
+			var str = "<p><b>"+a+"</b> : "+b+"</p>";
+
+			document.getElementById("show_msg").innerHTML+=str;
+		});
+
+	</script>
+</head>
+<body>
+<div style="background-color: #2451AC; width: 400px; padding: 20px; margin: 20px auto;">
+	<input type="text" style="height: 30px; width: 340px;" id="name" placeholder="Your Name">
+<br />
+<h4 style="margin: 0; padding: 10px;">Chat Box</h4>
+<div id="show_msg" style="margin: 0 auto; min-height: 400px; width: 400px; background-color: #FFF; overflow-y: scroll;"></div>
+<input type="text" id="msg" style="height: 30px; width: 340px;" placeholder="Your Message" />
+<button onclick="send()">Send</button>
+</div>
+<!-- 
+<button onclick="demo()">DEMO</button>
+<br />
+<input type="text" id="my_txt"/>
+<h2 id="show_msg"> james jeol </h2>
+
+
+<script type="text/javascript">
+	function demo()
+	{
+		var x = document.getElementById("my_txt").value;
+		document.getElementById("show_msg").innerHTML=x;
+		// var x = document.getElementById("show_msg").innerHTML;
+		// document.getElementById("my_txt").value=x;
+		
+	}
+</script> -->
+</body>
+</html>
