@@ -11,11 +11,20 @@ app.get("/", function(req, res){
 	res.render("index");
 });
 
+app.get("/getall",function(req,res){
+	MongoClient.connect("mongodb://localhost:27017",function(err,client){
+		var db=client.db("test");
+		db.collection("student").find().toArray(function(err,result){
+			res.send(result);
+		});
+	});
+});
+
 app.post("/",function(req,res){
 	MongoClient.connect("mongodb://localhost:27017",function(err,client){
 		var db=client.db("test");
 		db.collection("student").insert(req.body,function(err,result){
-			res.send(result);
+			res.send(result.ops[0]);
 		});
 	});
 });
