@@ -10,11 +10,15 @@ routes.get("/",function(req,res){
 
 routes.post("/",function(req,res){
 	req.body.password = sha1(req.body.password);
-	user.insert(req.body ,function(err,result){
+	var obj = {full_name:req.body.name, new_city : req.body.city};
+	delete req.body.name;
+	delete req.body.city;
+	var new_obj = {obj : obj , body : req.body};
+	user.insert( new_obj ,function(err,result){
 		if(err){
 			console.log("User signup error in controller",err);
 			return;		}
-			// console.log(req.body);
+			console.log(new_obj);
 		res.redirect("/login");	
 	});
 });
