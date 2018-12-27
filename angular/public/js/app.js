@@ -27,9 +27,33 @@ app.controller("myCtrl", function($scope, $http){
 			{
 				// console.log(res.data);
 				$scope.allData.push(res.data);
+				$scope.msg="Data Saved";
 				$("#msgModal").modal("show");
 			}
 		});
+	}
+	// var a;
+	$scope.askDelete=function(x){
+		$scope.selectedObj=x;
+	}
+	$scope.delete=function(){
+		$http({
+			url : "/delete",
+			data : $scope.selectedObj,
+			method : "post"
+		}).then(function(res){
+			if(res.data){
+				var n = $scope.allData.indexOf($scope.selectedObj);
+				$scope.allData.splice(n, 1);
+
+
+				$scope.msg="Data Deleted !";
+				$("#msgModal").modal("show");
+			}
+		});
+	}
+	$scope.askEdit=function(x){
+		$scope.newData=x;
 	}
 
 
