@@ -9,7 +9,7 @@ routes.get("/c_create/:id",function(req,res){
 		res.cookie("starid", newid , {expire:new Date(Date.now()+3600000), httpOnly:true});
 		console.log( newid);
 	}else{
-		var id = req.params.id;
+		var id=req.params.id;
 		res.cookie("starid",newid,{expire:new Date(Date.now()+3600000), httpOnly:true});
 	}
 	res.redirect("/view");

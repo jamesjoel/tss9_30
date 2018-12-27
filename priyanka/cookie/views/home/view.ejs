@@ -20,10 +20,11 @@
 
 		<td>		
 
-		<% if(starid){ %>
+		<% var id=item._id; 
+		if(starid==id){ %>
 			<a href="/view_cookie/c_create/<%= item._id%>" style="background-color: yellow;"><span class="glyphicon glyphicon-star"></span></a>
 		<% } else { %>
-			 <a href="/view_cookie/c_create/<%= item._id %>" style="background-color: white;"><span class="glyphicon glyphicon-star"></span></a> 
+			 <a href="/view"><span class="glyphicon glyphicon-star"></span></a> 
 		<% } %>		
 			</td>	
 			<td> <a href="/view_cookie/delete/<%= item._id%>"> Delete </a></td>
