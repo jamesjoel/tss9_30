@@ -15,22 +15,49 @@ app.controller("myCtrl", function($scope, $http){
 			console.log(res.data);
 		});
 	}
-
+	
 
 	$scope.save=function(){
-		$http({
-			url : "/",
-			method : "post",
-			data : $scope.newData
-		}).then(function(res){
-			if(res.data)
-			{
-				// console.log(res.data);
-				$scope.allData.push(res.data);
-				$scope.msg="Data Saved";
-				$("#msgModal").modal("show");
-			}
-		});
+		if($scope.newData._id)
+		{
+			console.log("----------------", $scope.newData);
+			$http({
+				url : "/edit",
+				method :"post",
+				data : $scope.newData
+			}).then(function(res){
+				if(res.data)
+				{
+					for(var i = 0; i < $scope.allData.length; i++)
+					{
+						if($scope.allData[i]._id == $scope.newData._id)
+						{
+							$scope.allData[i]=$scope.newData;
+						}
+					}
+
+					$scope.msg="Data Update Successfuly";
+					$("#msgModal").modal("show");
+				}
+			});
+		}
+		else
+		{
+			$http({
+				url : "/",
+				method : "post",
+				data : $scope.newData
+			}).then(function(res){
+				if(res.data)
+				{
+					// console.log(res.data);
+					$scope.allData.push(res.data);
+					$scope.msg="Data Saved";
+					$("#msgModal").modal("show");
+				}
+			});
+			
+		}
 	}
 	// var a;
 	$scope.askDelete=function(x){
@@ -53,7 +80,8 @@ app.controller("myCtrl", function($scope, $http){
 		});
 	}
 	$scope.askEdit=function(x){
-		$scope.newData=x;
+		// $scope.newData=x;
+		angular.copy(x, $scope.newData);
 	}
 
 
