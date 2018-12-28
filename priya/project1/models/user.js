@@ -30,6 +30,7 @@ db.collection("user").find(where).toArray(cb);
 	{
 		connect function(err,client)
 		{
+			
 			if(err)
 			{
 				console.log("Update error",err);

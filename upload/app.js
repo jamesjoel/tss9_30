@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var upload = require("express-fileupload");
 var crypto = require("crypto");
+var path = require("path");
 
 
 app.use(upload());
@@ -15,16 +16,16 @@ app.get("/", function(req, res){
 app.post("/save", function(req, res){
 	// console.log(req.files);
 	// console.log(req.files.photo.name);
-	var crypt_name =crypto.randomBytes(20).toString('hex');
+	var crypt_name =crypto.randomBytes(20).toString ('hex');
 	var file = req.files.photo;
 
-
+	var upload_path = path.resolve();
 	var name = req.files.photo.name;
 	var arr = name.split(".");
 	var n = arr.length;
 	var ext = arr[n-1];
 	var new_name = crypt_name+"."+ext;
-	file.mv(__dirname+"/images/"+new_name, function(err){
+	file.mv(upload_path+"/images/"+new_name, function(err){
 		if(err){
 			console.log("Upload Error", err);
 			return;

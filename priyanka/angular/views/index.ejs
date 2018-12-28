@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h2>The Stepping Stone</h2>
-			<button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New</button>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#addModal" ng-click="newData={}">Add New</button>
 		</div>
 		<table class="table table-bordered table-hover">
 		<tr>
@@ -23,6 +23,8 @@
 			<th>Fee.</th>
 			<th>City</th>
 			<th>Gender</th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 		<tr ng-repeat="obj in allData">
 			<td ng-bind="$index+1"></td>
@@ -30,6 +32,8 @@
 			<td ng-bind="obj.fee"></td>
 			<td ng-bind="obj.city"></td>
 			<td ng-bind="obj.gender"></td>
+			<td><button class="btn btn-primary" data-toggle="modal" data-target="#addModal" ng-click="askEdit(obj)">Edit</button></td>
+			<td><button class="btn btn-danger" data-toggle="modal" data-target="#delModal" ng-click="askDelete(Obj)">Delete</button></td>
 		</tr>
 		</table>
 	</div>
@@ -38,7 +42,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2>Add New Student</h2>
+				<h2>{{newData._id ? "Update":"Add New"}} Student</h2>
 				<!-- <pre ng-bind="newData | json"></pre> -->
 			</div>
 			<div class="modal-body">
@@ -66,7 +70,7 @@
 					Female <input value="female" ng-model="newData.gender" type="radio" />
 				</div>
 				<hr />
-				<button ng-click="save()" data-dismiss="modal" class="btn btn-success">Save</button>
+				<button ng-click="save()" data-dismiss="modal" class="btn btn-success">{{newData._id ? "Update":"Save"}}</button>
 				<button class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -81,7 +85,7 @@
 				<h2>Message</h2>
 			</div>
 			<div class="modal-body">
-				<p>Data Saved !</p>
+				<p>{{msg}}</p>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" data-dismiss="modal">Close</button>
@@ -100,6 +104,22 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="delModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Message!</h2>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete this!</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button class="btn btn-danger" data-dismiss="modal" ng-click="delete()">Delete</button>
 			</div>
 		</div>
 	</div>

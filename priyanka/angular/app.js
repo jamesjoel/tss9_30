@@ -2,6 +2,7 @@ var express=require("express");
 var app = express();
 var MongoClient = require("mongodb").MongoClient;
 var bodyParser=require("body-parser");
+var mongo=require("mongodb");
 
 app.set("view engine","ejs");
 app.use(bodyParser());
@@ -25,6 +26,15 @@ app.post("/",function(req,res){
 		var db=client.db("test");
 		db.collection("student").insert(req.body,function(err,result){
 			res.send(result.ops[0]);
+		});
+	});
+});
+app.post("/delete",function(req,res){
+	MongoClient.connect("mongodb://localhost:27017",function(err,client){
+		var db=client.db("test");
+		db.collection("student").remove({_id:new mongo.ObjectId(req.body._id)},function(err,result){
+			// console.log(result);
+			res.send(result);
 		});
 	});
 });
