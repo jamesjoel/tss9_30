@@ -33,7 +33,7 @@
 			<td ng-bind="obj.city"></td>
 			<td ng-bind="obj.gender"></td>
 			<td><button class="btn btn-primary" data-toggle="modal" data-target="#addModal" ng-click="askEdit(obj)">Edit</button></td>
-			<td><button class="btn btn-danger" data-toggle="modal" data-target="#delModal" ng-click="askDelete(Obj)">Delete</button></td>
+			<td><button class="btn btn-danger" data-toggle="modal" data-target="#delModal" ng-click="askDelete(obj)">Delete</button></td>
 		</tr>
 		</table>
 	</div>
@@ -70,7 +70,7 @@
 					Female <input value="female" ng-model="newData.gender" type="radio" />
 				</div>
 				<hr />
-				<button ng-click="save()" data-dismiss="modal" class="btn btn-success">{{newData._id ? "Update":"Save"}}</button>
+				<button ng-click="save()" data-dismiss="modal" class="btn btn-success"> {{ newData._id ? "Update":"Save" }}</button>
 				<button class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -100,7 +100,9 @@
 				<h2>Message</h2>
 			</div>
 			<div class="modal-body">
-				<p>Data Not Saved! Please try again later</p>
+				<p>
+					Data Not Saved
+				</p>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" data-dismiss="modal">Close</button>

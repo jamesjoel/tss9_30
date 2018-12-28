@@ -1,4 +1,9 @@
 <div class="container">
+	<%
+		 var arr = starid.split("#");
+
+	 %>
+	 
 	<table class="table table-hover table-striped tab;e-bordered">
 		<tr>
 			<th> S.No. </th>
@@ -18,14 +23,22 @@
 				<td> <%= item.fee %> </td>	
 				<td> <a href="/edit/<%= item._id %>"> Edit </a></td>
 
-		<td>		
+		<td>
+			<% var x = String(item._id);
+			%>
+			<% 
 
-		<% var id=item._id; 
-		if(starid==id){ %>
-			<a href="/view_cookie/c_create/<%= item._id%>" style="background-color: yellow;"><span class="glyphicon glyphicon-star"></span></a>
-		<% } else { %>
-			 <a href="/view"><span class="glyphicon glyphicon-star"></span></a> 
-		<% } %>		
+				if(arr.indexOf(x) > -1)
+				{ %>
+
+					<a href="/view_cookie/c_delete/<%= item._id%>" style="background-color: yellow;"><span class="glyphicon glyphicon-star"></span></a>
+				<% }
+				else
+				{ %>
+
+					<a href="/view_cookie/c_create/<%= item._id%>"><span class="glyphicon glyphicon-star"></span></a>
+				<% } %>
+				
 			</td>	
 			<td> <a href="/view_cookie/delete/<%= item._id%>"> Delete </a></td>
 		<% }) %>

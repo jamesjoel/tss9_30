@@ -29,6 +29,17 @@ app.post("/",function(req,res){
 		});
 	});
 });
+app.post("/edit",function(req,res){
+	var id=new mongo.ObjectId(req.body._id);
+	delete req.body._id;
+	MongoClient.connect("mongodb://localhost:27017",function(err,client){
+		var db=client.db("test");
+		db.collection("student").update({_id:id},{$set:req.body},function(err,result){
+			res.send(result);
+		});
+	});
+});
+
 app.post("/delete",function(req,res){
 	MongoClient.connect("mongodb://localhost:27017",function(err,client){
 		var db=client.db("test");
