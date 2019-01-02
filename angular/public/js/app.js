@@ -1,6 +1,26 @@
 var app = angular.module("myApp", []);
+app.filter("myFilter", function(){
+	return function(x, g){
+		if(g=="male")
+		{
+			var y = x*10/100;
+			return x-y;
+		}
+		if(g=="female")
+		{
+			var y = x*20/100;
+			return x-y;
+		}
+	}
+});
+
+
 
 app.controller("myCtrl", function($scope, $http){
+
+	$scope.orderType = true;
+	$scope.colName = 'fee';
+
 
 	$scope.newData={};
 	$scope.allData=[];
@@ -82,6 +102,10 @@ app.controller("myCtrl", function($scope, $http){
 	$scope.askEdit=function(x){
 		// $scope.newData=x;
 		angular.copy(x, $scope.newData);
+	}
+	$scope.sort=function(x){
+		$scope.colName=x;
+		$scope.orderType = ! $scope.orderType;
 	}
 
 
