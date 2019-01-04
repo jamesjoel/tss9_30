@@ -29,6 +29,7 @@ app.post("/",function(req,res){
 		});
 	});
 });
+
 app.post("/edit",function(req,res){
 	var id=new mongo.ObjectId(req.body._id);
 	delete req.body._id;
