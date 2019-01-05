@@ -146,49 +146,10 @@
 	</style>
 </head>
 <body ng-controller="loginCtrl">
-
-
-
-
 <div class="container">
-	<div my-dir></div>
-	<Br />
-        <div ng-hide="showBox" class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            
-                <span id="reauth-email" class="reauth-email"></span>
-                <input ng-model="loginData.username" type="text" class="form-control" placeholder="Email/Username address" autofocus>
-                <!-- <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> -->
-                <Br />
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" ng-click="login()">Next</button>
-                <Br />
-                <img ng-show="preloaderShow" src="/images/5.gif" height="15" width="15" />
-                <p class="text-danger text-center" ng-bind="msg"></p>
-                <div my-dir></div>
-            
-        </div><!-- /card-container -->]
-        
-
-        <div ng-show="showBox" class="card card-container">
-            
-            <p id="profile-name" class="profile-name-card" ng-bind="userData.name"></p>
-            <hr />
-            	<b ng-bind="userData.username"></b>
-                <span id="reauth-email" class="reauth-email"></span>
-                <input ng-model="loginData.password" type="password" class="form-control" placeholder="Password">
-                
-                <Br />
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" ng-click="do_login()">Sign in</button>
-                <Br />
-                <img ng-show="preloaderShow" src="/images/5.gif" height="15" width="15" />
-                <p class="text-danger text-center" ng-bind="msg"></p>
-            
-        </div>
-
-<div my-dir></div>
-    </div><!-- /container -->
+       
+	<h1>This is user page</h1>
+</div><!-- /container -->
 
 </body>
 </html>
