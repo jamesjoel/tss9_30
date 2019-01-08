@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript">
+		// function show()
+		// {
+		// 	var a = document.getElementById("f_text").value;
+		// 	var b = document.getElementById("s_text").value;
+		// 	var c = parseInt(a)+parseInt(b);
+		// 	document.getElementById("msg").innerHTML=c;
+		// }
+
+			// $("#btn")
+			// $(".btn")
+			// $("button, h1, h2")
+			// $("#btn h1 b")
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				var a = $("#f_text").val();
+				var b = $("#s_text").val();
+				var c = parseInt(a)+parseInt(b);
+				$("h2").html(c);
+			});
+
+
+
+			$("#btn2").click(function(){
+				// $("#box").hide();
+				// $("#box").show();
+				// $("#box").slideUp(3000);
+				// $("#box").slideDown(3000);
+				// $("#box").fadeOut(3000);
+				// $("#box").fadeIn(3000);
+				$("#box").css({ "background-color" : "red", "height" : "400px" });
+			});
+			// $("tr").click(function(){
+			// 	$(this).css();
+			// })
+		});
+
+
+
+
+	</script>
+	<style type="text/css">
+		#box{
+			height: 200px;
+			width: 200px;
+			background-color: #369872;
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<h1>hello</h1>
+	First <input type="Text" id="f_text"/>
+	<br />
+	<br />
+	Second <input type="Text" id="s_text"/>
+	<Br />
+	<Br />
+	<!-- <button onclick="show()">OK</button> -->
+	<button id="btn1">OK</button>
+	<h2 id="msg"></h2>
+	<hr />
+	<button id="btn2">OK</button>
+	<div id="box"></div>
+
+</body>
+
+
+
+
+</html>
