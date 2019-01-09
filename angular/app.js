@@ -72,7 +72,7 @@ app.post("/", function(req, res){
 		var db = client.db("tss9");
 		db.collection("student").insert(req.body, function(err, result){
 			res.send(result.ops[0]);
-			// console.log(result);
+			 console.log(result);
 		});
 	});
 
