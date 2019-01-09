@@ -5,6 +5,8 @@ routes.use("/", require("./login"));
 routes.use("/dashboard", backdoor, require("./dashboard"));
 routes.use("/category", backdoor ,require("./category"));
 routes.use("/product", backdoor , require("./product"));
+routes.use("/slider", backdoor , require("./slider"));
+routes.use("/logout", require("./logout"));
 
 function backdoor(req,res,next)
 {

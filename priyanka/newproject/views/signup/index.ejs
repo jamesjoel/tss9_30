@@ -1,3 +1,68 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#submit").click(function(){
+        var a =$("#fullname").val();
+        var b =$("#username").val();
+        var c =$("#password").val();
+        var d =$("#repassword").val();
+        var e =$("#address").val();
+        var f =$("#contact").val();
+        var g =$("#male").is(":checked");
+        var h =$("#female").is(":checked");
+        var i =$("#city").val();
+        var x=true;
+        if(a==""){
+            x=false;
+            $("#fullname_msg").html("Enter Fullname");
+        }else{
+            $("#fullname_msg").html("");
+        }
+        if(b==""){
+            x=false;
+            $("#username_msg").html("Enter Username");
+        }else{
+            $("#username_msg").html("");
+        }
+        if(c==""){
+            x=false;
+            $("#password_msg").html("Enter Password");
+        }else{
+            $("#password_msg").html("");
+        }
+        if(d==""){
+            x=false;
+            $("#repassword_msg").html("Enter Re-Password");
+        }else{
+            $("#repassword_msg").html("");
+        }
+        if(e==""){
+            x=false;
+            $("#address_msg").html("Enter Address");
+        }else{
+            $("#address_msg").html("");
+        }
+        if(f==""){
+            x=false;
+            $("#contact_msg").html("Enter Contact");
+        }else{
+            $("#contact_msg").html("");
+        }
+        if(g==false && h==false){
+            x=false;
+            $("#gender_msg").html("Select Gender ");
+        }else{
+            $("#gender_msg").html("");
+        }
+        if(i=="Select"){
+            x=false;
+            $("#city_msg").html("Select City");
+        }else{
+            $("#city_msg").html("");
+        }
+        return false;
+    });
+});
+</script>
 <div class="row">
     <div class="col-md-offset-4 col-md-4 col-lg-4 col-sm-4 col-xs-4" >
         <div class="panel panel-deafult" >
@@ -8,46 +73,54 @@
                 <form action="/signup" method="post">
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Fullname" class="form-control" name="full_name"/>
+                        <input id="fullname" type="text" placeholder="Fullname" class="form-control" name="full_name"/>
+                        <p class="text-danger" id="fullname_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" placeholder="Username" class="form-control" name="username"/>
+                        <input id="username" type="text" placeholder="Username" class="form-control" name="username"/>
+                        <p class="text-danger" id="username_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" placeholder="Password" class="form-control" name="password"/>
+                        <input type="password" id="password" placeholder="Password" class="form-control" name="password"/>
+                        <p class="text-danger" id="password_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Re-Password</label>
-                        <input type="password" placeholder="Re-Password" class="form-control"/>
+                        <input type="password" id="repassword" placeholder="Re-Password" class="form-control"/>
+                        <p class="text-danger" id="repassword_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Address</label>
-                        <textarea class="form-control" name="address"></textarea>
+                        <textarea id="address" class="form-control" name="address"></textarea>
+                        <p class="text-danger" id="address_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Contact no.</label>
-                        <input type="text" placeholder="Contact-no" class="form-control" name="contact"/>
+                        <input type="text"id="contact" placeholder="Contact-no" class="form-control" name="contact"/>
+                        <p class="text-danger" id="contact_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>Gender</label>
-                            Male<input type="radio" name="gender" value="male"/>
-                            Female<input type="radio" name="gender" value="female"/>
+                            Male<input type="radio" id="male" name="gender" value="male"/>
+                            Female<input type="radio" name="gender" id="female" value="female"/>
+                            <p class="text-danger" id="gender_msg"></p>
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <select class="form-control" name="city">
+                        <select class="form-control" id="city" name="city">
                             <option>Select</option>
                             <option>Indore</option>
                             <option>Bhopal</option>
                             <option>Mumbai</option>
                             <option>Pune</option>
                         </select>
+                        <p class="text-danger" id="city_msg"></p>
                     </div>        
             </div>
                <div class="panel-footer">
-                   <button class="btn btn-primary">Signup</button>
+                   <input  type="submit" id="submit" class="btn btn-primary" value="Signup">
                 </div>
                 </form>
         </div>

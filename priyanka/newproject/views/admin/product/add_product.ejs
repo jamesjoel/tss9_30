@@ -1,39 +1,101 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#submit").click(function(){
+            var a=$("#name").val();
+            var b=$("#image").val();
+            var c=$("#price").val();
+            var d=$("#detail").val();
+            var e=$("#cate").val();
+            var f=$("#discount").val();
+            var x=true;
+            if(a==""){
+                x=false;
+                $("#name_msg").html("Enter Product Name");
+            }else{
+                $("#name_msg").html("");
+            }
+            if(b==""){
+                x=false;
+                $("#image_msg").html("Select Product Image");
+            }else{
+                $("#image_msg").html("");
+            }
+            if(c==""){
+                x=false;
+                $("#price_msg").html("Enter Product Price");
+            }else{
+                $("#price_msg").html("");
+                // if(isNaN(c)==true){
+                //     x=false;
+                // $("#price_msg").html("Insert Numeric value");
+                // }else{
+                //     $("#price_msg").html("");
+                // }
+            }
+            if(d==""){
+                x=false;
+                $("#detail_msg").html("Enter Product Detail");
+            }else{
+                $("#detail_msg").html("");
+            }
+            if(e=="Select"){
+                x=false;
+                $("#cate_msg").html("Enter Product Category");
+            }else{
+                $("#cate_msg").html("");
+            }
+            if(f==""){
+                x=false;
+                $("#discount_msg").html("Enter Product Discount");
+            }else{
+                $("#discount_msg").html("");
+            }
+            return false;
+        });
+    });
+</script>
 <div class="container">
     <div class="row">
         <div class=" col-md-4 col-xs-4 col-sm-4 col-lg-4 col-xs-offset-4 col-sm-offset-4 col-lg-offset-4 col-md-offset-4">
             <form action="/admin/product/add" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" class="form-control" name="name"/>
+                    <input id="name" type="text" class="form-control" name="name"/>
+                    <p class="text-danger" id="name_msg"></p>
                 </div>
                 <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" class="form-control" name="image"/>
+                    <input id="image" type="file" class="form-control" name="image"/>
+                    <p class="text-danger" id="image_msg"></p>
                 </div>
                 <p class="text-danger"> <%= message %> </p>
                 <div class="form-group">
                         <label>Product Price</label>
-                        <input type="text" class="form-control" name="price"/>
+                        <input id="price" type="text" class="form-control" name="price"/>
+                        <p class="text-danger" id="price_msg"></p>
                 </div>
                 <div class="form-group">
                         <label>Detail</label>
-                        <textarea type="text" class="form-control" name="detail"></textarea>
+                        <textarea type="text" id="detail" class="form-control" name="detail"></textarea>
+                        <p class="text-danger" id="detail_msg"></p>
                 </div>
                 <div class="form-group">
                         <label>Product Category</label>
-                        <select class="form-control" name="category">
+                        <select class="form-control" id="cate" name="category">
                             <option>Select</option>
                             <% result.forEach(function(item){ %>
                                 <option value="<%= item._id %>"><%= item.name %></option>
                             <% }) %>
                             
                         </select>
+                        <p class="text-danger" id="cate_msg"></p>
                 </div>
                 <div class="form-group">
                         <label>Discount Price</label>
-                        <input type="text" class="form-control" name="discount"/>
+                        <input type="text" id="discount" class="form-control" name="discount"/>
+                        <p class="text-danger" id="discount_msg"></p>
                 </div>
-                <button class="btn btn-info" type="submit">Add Product</button>
+                <button class="btn btn-info" id="submit" type="submit">Add Product</button>
             </form>
         </div>
     </div>    
