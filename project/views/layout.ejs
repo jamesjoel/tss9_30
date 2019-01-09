@@ -328,6 +328,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<script src="/js/popper.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/stellar.js"></script>
@@ -342,6 +343,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="/vendors/counter-up/jquery.counterup.js"></script>
 	<script src="/js/mail-script.js"></script>
 	<script src="/js/theme.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		$('.bxslider').bxSlider({
+		  auto: true,
+		  autoControls: true,
+		  stopAutoOnClick: true,
+		  pager: true
+		  
+		});
+	});
+	</script>
 </body>
 
 </html>

@@ -1,3 +1,100 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			var a = $("#name").val();
+			var b = $("#image").val();
+			var c = $("#price").val();
+			var d = $("#cate").val();
+			var e = $("#detail").val();
+			var f = $("#discount").val();
+			var x = true;
+
+
+			/*
+			var a = $("#male").is(":checked");
+			var b = $("#female").is(":checked");
+			if(a == false && b == false)
+			{
+				
+			}
+
+
+			*/
+
+
+			if(a=="")
+			{
+				x = false;
+				$("#name_msg").html("Enter Product Name");
+			}
+			else
+			{
+				$("#name_msg").html("");
+			}
+			if(b=="")
+			{
+				x = false;
+				$("#image_msg").html("Select Product Image");
+			}
+			else
+			{
+				$("#image_msg").html("");
+			}
+			if(c=="")
+			{
+				x = false;
+				$("#price_msg").html("Insert Product Price");
+			}
+			else
+			{
+				$("#price_msg").html("");
+				if(isNaN(c)==true)
+				{
+					x = false;
+					$("#price_msg").html("Insert Numeric Only");		
+				}
+				else
+				{
+					
+					$("#price_msg").html("");		
+				}
+
+
+			}
+			if(d=="Select")
+			{
+				x = false;
+				$("#cate_msg").html("Select Product Category");
+			}
+			else
+			{
+				$("#cate_msg").html("");
+			}
+			if(e=="")
+			{
+				x = false;
+				$("#detail_msg").html("Insert Product Detail");
+			}
+			else
+			{
+				$("#detail_msg").html("");
+			}
+			if(f=="")
+			{
+				x = false;
+				$("#discount_msg").html("Insert Product Discount");
+			}
+			else
+			{
+				$("#discount_msg").html("");
+			}
+
+
+
+			return x;
+		});
+	});
+</script>
 <div class="container">
 	<Br />
 	<Br />
@@ -5,39 +102,45 @@
 		<form action="/admin/product/add" method="post" enctype="multipart/form-data">
 		  <div class="form-group">
 		    <label for="email">Product Name</label>
-		    <input type="text" name="name" class="form-control">
+		    <input id="name" type="text" name="name" class="form-control">
+		    <p class="text-danger" id="name_msg"></p>
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Product Image</label>
-		    <input type="file" name="image" class="form-control">
+		    <input type="file" id="image" name="image" class="form-control">
+		    <p class="text-danger" id="image_msg"></p>
 		  </div>
 		  <p class="text-danger">
 		  	<%= message %>
 		  </p>
 		  <div class="form-group">
 		    <label for="email">Product Price</label>
-		    <input type="text" name="price" class="form-control">
+		    <input type="text" id="price" name="price" class="form-control">
+		    <p class="text-danger" id="price_msg"></p>
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Detail</label>
-		    <textarea name="detail" class="form-control"></textarea>
+		    <textarea name="detail" id="detail" class="form-control"></textarea>
+		    <p class="text-danger" id="detail_msg"></p>
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Product Category</label>
-		    	<select name="category" class="form-control">
+		    	<select name="category" id="cate" class="form-control">
 		    		<option>Select</option>
 		    		<% result.forEach(function(item){ %>
 		    			<option value="<%= item._id %>"><%= item.name %></option>
 
 		    		<% }) %>
 		    	</select>
+		    	<p class="text-danger" id="cate_msg"></p>
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Discount</label>
-		    <input type="text" name="discount" class="form-control">
+		    <input type="text" name="discount" id="discount" class="form-control">
+		    <p class="text-danger" id="discount_msg"></p>
 		  </div>
 		  
-		  <button type="submit" class="btn btn-primary">Add Product</button>
+		  <button type="submit" id="submit" class="btn btn-primary">Add Product</button>
 		</form>
 		
 	</div>
