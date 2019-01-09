@@ -4,6 +4,7 @@ var express = require("express");
 var routes = express.Router();
 var sha1 = require("sha1");
 var session = require("express-session");
+var flash=require(flash);
 var user = require("../model/user");
 
 routes.get("/",function(req,res){
@@ -21,7 +22,7 @@ routes.post("/",function(req,res){
 			console.log("Login error in controller",err);
 			return;	}
 		if(result.length > 0){
-			// console.log(result);
+			 console.log(result);
 			if(result[0].password == sha1(p)){
 				req.session._id = result[0]._id;
 				req.session.name = result[0].name;

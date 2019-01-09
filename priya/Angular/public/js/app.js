@@ -1,9 +1,9 @@
-var app=angular.module("my app",[]);
+var app=angular.module("myApp",[]);
 app.controller("myCtrl",function($scope,$http){
 
 	$scope.newData={}
 	$scope. allData=[]
-	$scope.newData.name="rohit"
+	//$scope.newData.name="rohit"
 
 	$scope.getAll(function(){
 		$http({
@@ -42,13 +42,13 @@ app.controller("myCtrl",function($scope,$http){
 		else
 		{
 			$http({
-				url : "/",
-				method : "post",
-				data : $scope.newData
+				url :"/",
+				method :"post",
+				data :$scope.newData
 			}).then(function(res){
 				if(res.data)
 				{
-					// console.log(res.data);
+					 console.log(res.data);
 					$scope.allData.push(res.data);
 					$scope.msg="Data Saved";
 					$("#msgModal").modal("show");
