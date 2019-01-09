@@ -19,17 +19,18 @@
 		<table class="table table-bordered table-hover">
 		<tr>
 			<th>S.No.</th>
-			<th>Name</th>
-			<th>Fee.</th>
-			<th>City</th>
+			<th>Name<a href="#" ng-click="sort('name')"><i class="fa fa-sort" aria-hidden="true"></i></a></th>
+			<th>Fee <a href="#" ng-click="sort('fee')"><i class="fa fa-sort" aria-hidden="true"></i></a></th>
+			<th>City<a href="#" ng-click="sort('city')"><i class="fa fa-sort" aria-hidden="true"></i></a></th>
 			<th>Gender</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
-		<tr ng-repeat="obj in allData">
+		<tr ng-repeat="obj in allData | orderBy:colName:orderType">
 			<td ng-bind="$index+1"></td>
-			<td ng-bind="obj.name"></td>
-			<td ng-bind="obj.fee"></td>
+			<td ng-bind="obj.name | uppercase"></td>
+			<td ng-bind="obj.fee | currency"></td>
+			<td ng-bind="obj.fee | myFilter:obj.gender|currency"></td>
 			<td ng-bind="obj.city"></td>
 			<td ng-bind="obj.gender"></td>
 			<td><button class="btn btn-primary" data-toggle="modal" data-target="#addModal" ng-click="askEdit(obj)">Edit</button></td>

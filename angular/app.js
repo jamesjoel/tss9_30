@@ -1,20 +1,30 @@
 var express = require('express');
 var app = express();
 var bodyParser = require("body-parser");
-var MongoClient = require("mongodb").MongoClient;
+var MongoClient    = require("mongodb").MongoClient;
 var mongo = require("mongodb");
 
 
 
-// var url = "mongodb://james:123james@cluster0-shard-00-00-1wdmw.mongodb.net:27017,cluster0-shard-00-01-1wdmw.mongodb.net:27017,cluster0-shard-00-02-1wdmw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
+// var url ="mongodb://james:123james@cluster0-shard-00-00-1wdmw.mongodb.net:27017,cluster0-shard-00-01-1wdmw.mongodb.net:27017,cluster0-shard-00-02-1wdmw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
+
+// var url ="mongodb://james:123james@cluster0-shard-00-00-1wdmw.mongodb.net:27017,cluster0-shard-00-01-1wdmw.mongodb.net:27017,cluster0-shard-00-02-1wdmw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
+
+
+
 // const client = new MongoClient(url, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("mydb").collection("stu");
+// client.connect(function(err, client){
+// 	if(err){
+// 		console.log("----------",err);
+// 		return;
+// 	}
+// 	var db = client.db("mydb");
 //  // perform actions on the collection object
+//  db.collection("stu").find().toArray(function(err, result){
+//  	console.log(result);
 //   client.close();
-//   collection.find().toArray(function(err, result){
-//   	console.log(result);
-//   })
+//  })
+  
 // });
 
 
@@ -25,6 +35,12 @@ var mongo = require("mongodb");
 // 	}
 
 // });
+
+
+
+
+
+
 
 
 
