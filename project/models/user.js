@@ -25,3 +25,10 @@ module.exports.update=function(where, obj, cb){
 		db.collection("user").update(where, {$set : obj}, cb);
 	});
 }
+module.exports.findandcount=function(where, cb){ 
+	connect(function(err, client){
+		var db = client.db(dbname);
+		db.collection("user").find(where).count(cb);
+		// db.collection("user").find({ city : "ujjain"}).toArray(function(err, result));
+	});
+}

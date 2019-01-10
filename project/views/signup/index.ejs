@@ -1,3 +1,4 @@
+
 <section style="margin-top: 150px;" class="feature_product_area section_gap">
 		<div class="main_box">
 			<div class="container-fluid">
@@ -12,48 +13,57 @@
 								<form action="/signup" method="post">
 									<div class="form-group">
 										<label>Full Name</label>
-										<input name="full_name" type="text" placeholder="Full Name" class="form-control">
+										<input name="full_name" id="full_name" type="text" placeholder="Full Name" class="form-control">
+										<p class="text-danger" id="full_name_msg"></p>
 									</div>
+
 									<div class="form-group">
 										<label>Username/Email</label>
-										<input name="username" type="text" placeholder="Username" class="form-control">
+										<input id="username" name="username" type="text" placeholder="Username" class="form-control">
+										<p class="text-danger" id="username_msg"></p>
 									</div>
 									<div class="form-group">
 										<label>Password</label>
-										<input name="password" type="password" placeholder="Password" class="form-control">
+										<input name="password" type="password" id="password" placeholder="Password" class="form-control">
+										<p class="text-danger" id="password_msg"></p>
 									</div>
 									<div class="form-group">
 										<label>Re-Password</label>
-										<input type="password" placeholder="Re-Password" class="form-control">
+										<input type="password" id="re_pass" placeholder="Re-Password" class="form-control">
+										<p class="text-danger" id="re_pass_msg"></p>
 									</div>
 									<div class="form-group">
 										<label>Address</label>
-										<textarea name="address" class="form-control" placeholder="Address"></textarea>
+										<textarea name="address" id="add" class="form-control" placeholder="Address"></textarea>
+										<p class="text-danger" id="add_msg"></p>
 									</div>
 									<div class="form-group">
 										<label>Contact</label>
 										<input name="contact" type="text" placeholder="Contact" class="form-control">
+										<p class="text-danger" id="contact_msg"></p>
 									</div>
 									<div class="form-group">
 										<label>City</label>
 										<br/>
-										<select name="city" class="form-control">
+										<select name="city" id="city" class="form-control">
 											<option>Select</option>
 											<option>Indore</option>
 											<option>Mumbai</option>
 											<option>Pune</option>
 										</select>
+										<p class="text-danger" id="city_msg"></p>
 									</div>
 									<Br />
 									<div class="form-group">
 										<label>Gender</label>
 										<br />
-										Male <input type="radio" name="gender" value="male">
-										Female <input type="radio" name="gender" value="female">
+										Male <input type="radio" id="male" name="gender" value="male">
+										Female <input type="radio" id="female" name="gender" value="female">
+										<p class="text-danger" id="gender_msg"></p>
 									</div>
 							</div>
 							<div class="panel-footer">
-								<input type="submit" class="btn btn-success" value="Signup">
+								<input id="submit" type="submit" class="btn btn-success" value="Signup">
 							</div>
 							</form>
 						</div>

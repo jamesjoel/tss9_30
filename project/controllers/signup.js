@@ -20,4 +20,12 @@ routes.post("/", function(req, res){
 	});
 });
 
+routes.post("/checkusername", function(req, res){
+	var u = req.body.user;
+	user.findandcount({ username : u}, function(err, result){
+		console.log(result);
+		res.send(String(result));
+	});
+});
+
 module.exports=routes;

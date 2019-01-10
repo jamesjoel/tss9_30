@@ -355,6 +355,153 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	});
 	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#username").blur(function(){
+			var a = $("#username").val();
+			var reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+			if(a != "" && reg.test(a) == true)
+			{
+				$.ajax({
+					url : "/signup/checkusername",
+					type : "post",
+					data : { user : a },
+					success :  function(res){
+						console.log(res);
+						if(res=="1")
+						{
+							$("#username_msg").html("This username/Email Already Registred");
+						}
+					}
+				});
+			}
+		});
+
+
+
+
+		$("#submit").click(function(){
+			var a = $("#full_name").val();
+			var b = $("#username").val();
+			var c = $("#password").val();
+			var d = $("#re_pass").val();
+			var e = $("#add").val();
+			var f = $("#city").val();
+			var g = $("#male").is(":checked");
+			var h = $("#female").is(":checked");
+			var i = $("#contact").val();
+			var x = true;
+
+
+			if(a=="")
+			{
+				x = false;
+				$("#full_name_msg").html("Enter Full Name");
+			}
+			else
+			{
+				$("#full_name_msg").html("");
+			}
+			if(b=="")
+			{
+				x = false;
+				$("#username_msg").html("Insert Username");
+			}
+			else
+			{
+				$("#username_msg").html("");
+				var reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+				if(reg.test(b)==false)
+				{
+					x = false;
+					$("#username_msg").html("Insert Correct Email");
+				}
+				else
+				{
+					$("#username_msg").html("");
+				}
+			}
+			if(c=="")
+			{
+				x = false;
+				$("#password_msg").html("Insert Password");
+			}
+			else
+			{
+				$("#password_msg").html("");
+				
+			}
+			if(d=="")
+			{
+				x = false;
+				$("#re_pass_msg").html("Insert Re-Password");
+			}
+			else
+			{
+				$("#re_pass_msg").html("");
+				if(c != d)
+				{
+					x = false;
+					$("#re_pass_msg").html("Insert Correct Re-Password");
+				}
+				else
+				{
+					
+					$("#re_pass_msg").html("");
+				}
+				
+			}
+
+			if(e=="")
+			{
+				x = false;
+				$("#add_msg").html("Insert Address");
+			}
+			else
+			{
+				$("#add_msg").html("");
+				
+			}
+
+			if(f=="Select")
+			{
+				x = false;
+				$("#city_msg").html("Select City");
+			}
+			else
+			{
+				$("#city_msg").html("");
+			}
+			if(g==false && h==false)
+			{
+				x = false;
+				$("#gender_msg").html("Select Gender");	
+			}
+			else
+			{
+				$("#gender_msg").html("");	
+
+			}
+
+			if(i=="")
+			{
+				x = false;
+				$("#contact_msg").html("Insert Contact");
+			}
+			else
+			{
+				$("#contact_msg").html("");
+			}
+
+
+
+
+
+			return x;
+		});
+	});
+</script>
 </body>
 
 </html>
