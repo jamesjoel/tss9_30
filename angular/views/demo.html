@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/js/angular.js"></script>
+
+	<script type="text/javascript">
+		/*
+			app.controller()
+			app.server()
+			app.direcitve()
+			app.filter()
+			app.run()
+			app.config()
+
+
+
+
+		*/
+		var app = angular.module("myApp", []);
+		app.config(function($interpolateProvider){
+			$interpolateProvider.startSymbol("#");
+			$interpolateProvider.endSymbol("#");
+		});
+
+
+		app.controller("myCtrl", function($scope){
+			$scope.name="Rohit";
+			$scope.arr="james";
+			$scope.demo=function(){
+				$scope.arr="nidhi";
+			}
+
+			$scope.$watch("arr", function(newV, oldV, scope){
+				alert("changed");
+				console.log($scope.arr);
+
+			});
+		});
+
+
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<h1>Hello world</h1>
+<h2>#name#</h2>
+<button ng-click="demo()">OK</button>
+</body>
+</html>
